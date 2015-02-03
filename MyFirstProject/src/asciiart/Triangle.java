@@ -23,8 +23,8 @@ public class Triangle {
 		} 
 		while (width < 2);
 
-		// Loops through
-		for (int i = 0; i < 2 * width - 1; i++) {
+		// Loops through, creating the first half
+		for (int i = 0; i < width - 1; i++) {
 
 			// Creates a row
 			for (int j = 0; j < i; j++){
@@ -39,6 +39,21 @@ public class Triangle {
 			
 		}
 		
+		// Loops through, creating the second half
+		for (int i = width - 1; i >0 ; i--) {
+
+			// Creates a row
+			for (int j = 0; j < i; j++){
+				
+				// Prints question marks
+				System.out.print("?");
+				
+			}
+			
+			// Prints #'s
+			System.out.println("#");
+			
+		}
 		reader.close();
 		
 	}
