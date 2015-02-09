@@ -81,11 +81,4 @@ local.properties
 # PDT-specific
 .buildpath
 /.gitignore
-/asciiart/
-/average/
-/calculator/
-/calendar/
-/exponentialwealth/
-/guessinggame/
-/primegenerator/
 /arrays/
