@@ -22,4 +22,5 @@ public enum MinesNear {
 		this.color = color;
 		
 	}
+	
 }

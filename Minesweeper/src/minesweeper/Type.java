@@ -2,7 +2,7 @@ package minesweeper;
 
 public enum Type {
 	
-	Mine, Flag, QuestionMark, Cleared
+	Unknown, Flag, QuestionMark, Cleared
 	
 	
 }
