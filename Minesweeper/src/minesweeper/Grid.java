@@ -29,7 +29,17 @@ public class Grid {
 	// Fills grid
 	private void fillGrid (Random random) {
 		
-		
+		for (int i = 0; i < this.size; i++) {
+			
+			for (int j = 0; j < this.size; j++) {
+				
+				// Creates Square
+				squareArray[i][j] = Square();
+				
+				
+			}
+			
+		}
 		
 		
 	}

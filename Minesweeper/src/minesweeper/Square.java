@@ -13,6 +13,7 @@ public class Square {
 		
 	}
 	
+	// Creates Square
 	public Square(Type type) {
 		
 		
@@ -20,9 +21,19 @@ public class Square {
 		
 		
 	}
+	
+	// Creates Square
 	Square(Type type, byte minesNear) {
 		
 		this.type = type;
+		
+		
+		
+	}
+	
+	// Creates Square
+	Square(boolean hasMine) {
+		
 		
 		
 	}
