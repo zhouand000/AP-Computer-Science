@@ -1,10 +1,19 @@
 package battleship;
 
+/**
+ * @author andrew
+ * 
+ *         The game
+ *
+ */
 public class BattleshipGame {
 	
-	public static void main(String[] args) {
+	/**
+	 * @param args
+	 */
+	public static void main (String[] args) {
 		
-		System.err.println("Not complete yet.");		
+		System.err.println("Not complete yet.");
 		
 	}
 	

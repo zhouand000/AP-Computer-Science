@@ -4,6 +4,7 @@ import java.util.Random;
 
 // import java.util.Scanner;
 
+@SuppressWarnings("javadoc")
 public class ComputerGuessingGame {
 	
 	public static void main (String[] args) {
@@ -50,7 +51,8 @@ public class ComputerGuessingGame {
 		
 		// Prints out statistics
 		System.out.println("The JVM's guess was correct.");
-		System.out.println("The JVM guessed the number correctly after " + attempts + " attempts.");
+		System.out.println("The JVM guessed the number correctly after "
+				+ attempts + " attempts.");
 		
 	}
 	

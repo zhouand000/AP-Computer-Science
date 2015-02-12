@@ -2,6 +2,7 @@ package average;
 
 import java.util.Scanner;
 
+@SuppressWarnings("javadoc")
 public class Average {
 	
 	/**

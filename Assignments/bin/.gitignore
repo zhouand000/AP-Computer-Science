@@ -80,16 +80,3 @@ local.properties
  
 # PDT-specific
 .buildpath
-<<<<<<< Updated upstream:Assignments/bin/.gitignore
-/unitConverter/
-/unitconverter/
-=======
-/arrays/
-/asciiart/
-/average/
-/calculator/
-/calendar/
-/exponentialwealth/
-/guessinggame/
-/primegenerator/
->>>>>>> Stashed changes:MyFirstProject/bin/.gitignore

@@ -2,6 +2,7 @@ package guessinggame;
 
 import java.util.Scanner;
 
+@SuppressWarnings("javadoc")
 public class AddingMachine {
 	
 	public static void main (String args[]) {

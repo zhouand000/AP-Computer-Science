@@ -1,46 +1,39 @@
 package minesweeper;
 
+@SuppressWarnings("javadoc")
 public class Square {
 	
 	Type type;
+	
 	byte minesNear;
 	
 	// Initializes the square
-	public Square() {
+	public Square () {
 		
 		this(Type.Unknown);
 		
-		
 	}
 	
 	// Creates Square
-	public Square(Type type) {
-		
+	public Square (Type type) {
 		
 		this.type = type;
 		
-		
 	}
 	
 	// Creates Square
-	Square(Type type, byte minesNear) {
+	Square (Type type, byte minesNear) {
 		
 		this.type = type;
 		
-		
-		
 	}
 	
 	// Creates Square
-	Square(boolean hasMine) {
-		
-		
+	Square (boolean hasMine) {
 		
 	}
 	
-	public static void onSelect() {
-		
-		
+	public static void onSelect () {
 		
 	}
 	

@@ -1,6 +1,8 @@
 package minesweeper;
+
 import java.awt.Color;
 
+@SuppressWarnings("javadoc")
 public enum MinesNear {
 	
 	Zero(0, Color.WHITE),
@@ -8,15 +10,16 @@ public enum MinesNear {
 	Two(2, Color.GREEN),
 	Three(3, Color.RED),
 	Four(4, Color.MAGENTA),
-	Five(5, new Color(.5f,0f,0f)),
+	Five(5, new Color(.5f, 0f, 0f)),
 	Six(6, Color.CYAN),
 	Seven(7, Color.BLACK),
 	Eight(8, Color.GRAY);
 	
 	int mines;
+	
 	Color color;
 	
-	MinesNear(int mines, Color color) {
+	MinesNear (int mines, Color color) {
 		
 		this.mines = mines;
 		this.color = color;

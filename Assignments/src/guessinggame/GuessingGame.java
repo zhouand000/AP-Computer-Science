@@ -3,6 +3,7 @@ package guessinggame;
 import java.util.Random;
 import java.util.Scanner;
 
+@SuppressWarnings("javadoc")
 public class GuessingGame {
 	
 	public static void main (String[] args) {
@@ -51,7 +52,8 @@ public class GuessingGame {
 		
 		// Prints out statistics
 		System.out.println("Your guess was correct.");
-		System.out.println("You guessed the number correctly after " + attempts + " attempts.");
+		System.out.println("You guessed the number correctly after " + attempts
+				+ " attempts.");
 		
 		// Closes Scanner
 		reader.close();

@@ -3,6 +3,7 @@ package arrays;
 import java.util.Scanner;
 import java.util.Random;
 
+@SuppressWarnings("javadoc")
 public class NumberList {
 	
 	public static void main (String[] args) {

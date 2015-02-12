@@ -1,12 +1,23 @@
 package minesweeper;
 
+/**
+ * @author andrew
+ * 
+ *         The various difficulty levels
+ * 
+ */
 public enum Difficulty {
-	// Creates difficulty levels, and sets the density 
-	Easy (10, .05f),
-	Normal (16, .1f),
-	Hard (32, .15f),
-	Veteran (64, .2f),
-	Custom (0, 0f);
+	@SuppressWarnings("javadoc")
+	// Creates difficulty levels, and sets the density
+	Easy(10, .05f),
+	@SuppressWarnings("javadoc")
+	Normal(16, .1f),
+	@SuppressWarnings("javadoc")
+	Hard(32, .15f),
+	@SuppressWarnings("javadoc")
+	Veteran(64, .2f),
+	@SuppressWarnings("javadoc")
+	Custom(0, 0f);
 	
 	// Creates density variable
 	

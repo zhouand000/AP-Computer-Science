@@ -2,6 +2,7 @@ package asciiart;
 
 import java.util.Scanner;
 
+@SuppressWarnings("javadoc")
 public class Triangle {
 	
 	/**

@@ -1,5 +1,6 @@
 package primegenerator;
 
+@SuppressWarnings("javadoc")
 public class PrimeGenerator {
 	
 	public static void main (String[] args) {
@@ -49,7 +50,8 @@ public class PrimeGenerator {
 		}
 		
 		// Print out statistics
-		System.out.println("There are " + primesFound + " primes less than " + limit + ".");
+		System.out.println("There are " + primesFound + " primes less than "
+				+ limit + ".");
 		
 	}
 	

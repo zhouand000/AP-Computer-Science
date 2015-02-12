@@ -1,5 +1,6 @@
 package exponentialwealth;
 
+@SuppressWarnings("javadoc")
 public class WealthCalculator {
 	
 	public static void main (String[] args) {
@@ -25,7 +26,8 @@ public class WealthCalculator {
 		while (wealth <= 100000000);
 		
 		// Prints out information
-		System.out.println("After " + week + " weeks, the founder will have over 100 million dollars.");
+		System.out.println("After " + week
+				+ " weeks, the founder will have over 100 million dollars.");
 		
 	}
 	

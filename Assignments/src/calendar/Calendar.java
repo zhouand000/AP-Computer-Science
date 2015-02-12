@@ -2,6 +2,7 @@ package calendar;
 
 import java.util.Scanner;
 
+@SuppressWarnings("javadoc")
 public class Calendar {
 	
 	/**

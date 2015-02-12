@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
+@SuppressWarnings("javadoc")
 public class DiceEngine {
 	
 	public static void main (String[] args) {
@@ -57,7 +58,6 @@ public class DiceEngine {
 			// Prints the dice roll
 			System.out.println(output);
 			
-			
 			// Gets the index of the dice roll, if it already exists. If not,
 			// then index = -1
 			int index = stringArrayList.indexOf(output);
@@ -89,13 +89,10 @@ public class DiceEngine {
 		System.out.println("There was/were: ");
 		for (int i = 0; i < stringArrayList.size(); i++) {
 			
-			System.out.print(countArrayList.get(i).toString() + " x " + stringArrayList.get(i) + "\n");
-			
+			System.out.print(countArrayList.get(i).toString() + " x "
+					+ stringArrayList.get(i) + "\n");
 			
 		}
-		
-		
-		
 		
 		// System.out.println(Arrays.deepToString(stringArray));
 		

@@ -1,5 +1,6 @@
 package asciiart;
 
+@SuppressWarnings("javadoc")
 public class AsteriskTriangles {
 	
 	public static void main (String[] args) {
