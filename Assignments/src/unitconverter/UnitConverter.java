@@ -23,50 +23,134 @@ public class UnitConverter {
 			
 			// Gets unit type
 			switch (input) {
-				
-				case "length": case "weight": case "power":
+			
+				case "length":
+				case "weight":
+				case "power":
 					mode = input;
-					break;
-					
+				break;
+				
 				default:
 					mode = "invalid";
-					break;
-					
+				break;
+			
 			}
 			
 		}
 		while (mode != "invalid");
 		
-		
-		
-		
 		reader.close();
-		
-		
 		
 	}
 	
-	public String getUnit(String input) {
-		String unit;
-		// Sets unit
+	
+	// Gets unit of distance
+	public String getDistanceUnit (String input) {
+		String output;
+		// Sets output
 		switch (input) {
-			
-			case "foot": case "feet": case "ft":  
-				unit = "ft";
-				break;
-			case "mile": case "miles": case "mi":
-				unit = "mi";
-				break;
-			case "pound": case "pounds": case "lb": case "lbs":
-				unit = "lb";
-				break;
-			case "ounce": case "ounces": case "oz":
-				unit = "oz";
-			case "kilometer": case "kilometers": case "km": 
-				unit = "km";
-				break;
-				
+		
+			case "foot":
+			case "feet":
+			case "ft":
+				output = "ft";
+			break;
+			case "mile":
+			case "miles":
+			case "mi":
+				output = "mi";
+			break;
+			case "pound":
+			case "pounds":
+			case "lb":
+			case "lbs":
+				output = "lb";
+			break;
+			case "ounce":
+			case "ounces":
+			case "oz":
+				output = "oz";
+			case "kilometer":
+			case "kilometre":
+			case "kilometers":
+			case "kilometres":
+			case "km":
+				output = "km";
+			break;
+			case "inch":
+			case "inches":
+			case "in":
+				output = "in";
+			break;
+			case "centimeter":
+			case "centimetre":
+			case "centimeters":
+			case "centimetres":
+			case "cm":
+				output = "cm";
+			break;
+			default:
+				output = "invalid";
+			break;
 		}
-		return unit;
+		return output;
+		
+	}
+	
+	// Gets unit
+	public String getUnit (String input) {
+		String output;
+		// Sets output
+		switch (input) {
+		
+			case "foot":
+			case "feet":
+			case "ft":
+				output = "ft";
+			break;
+			case "mile":
+			case "miles":
+			case "mi":
+				output = "mi";
+			break;
+			case "pound":
+			case "pounds":
+			case "lb":
+			case "lbs":
+				output = "lb";
+			break;
+			case "ounce":
+			case "ounces":
+			case "oz":
+				output = "oz";
+			case "kilometer":
+			case "kilometers":
+			case "km":
+				output = "km";
+			break;
+			case "inch":
+			case "inches":
+			case "in":
+				output = "in";
+			break;
+			case "centimeter":
+			case "centimetre":
+			case "centimeters":
+			case "centimetres":
+			case "cm":
+				output = "cm";
+			break;
+			case "kwh":
+				output = "kwh";
+			break;
+			case "horsepower":
+			case "hp":
+				output = "hp";
+			break;
+			default:
+				output = "invalid";
+			break;
+		}
+		return output;
 	}
 }
