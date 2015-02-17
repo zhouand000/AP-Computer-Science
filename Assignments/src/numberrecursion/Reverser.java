@@ -30,7 +30,7 @@ public class Reverser {
 	public String reverse (String str) {
 		
 		// Uses ternary operator to check if halting condition is met 
-		return str.length() > 0 ? "" + str.charAt(str.length()-1) + reverse(str.substring(0, str.length()-1)) : "";
+		return str.length() > 0 ? str.charAt(str.length()-1) + reverse(str.substring(0, str.length()-1)) : "";
 		
 		
 		
