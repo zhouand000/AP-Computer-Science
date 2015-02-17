@@ -31,12 +31,12 @@ public class Rectangle {
 			// Adds '#'s
 			for (int j = 0; j < width - 2; j++) {
 				
-				System.out.println("#");
+				System.out.print("#");
 				
 			}
 			
 			// Asterisk at end
-			System.out.print("*");
+			System.out.println("*");
 			
 		}
 		

@@ -6,181 +6,177 @@ import java.util.Scanner;
 public class UnitConverter {
 	
 	public static void main (String[] args) {
-		
-		// Creates Scanner
-		Scanner reader = new Scanner(System.in);
-		
 		// Creates UnitConverter
 		UnitConverter uc = new UnitConverter();
 		
-		// Creates mode variable
-		String input;
-		String unitType;
-		String unit;
-		String inputUnit;
-		String outputUnit;
+		// Creates Scanner
+		uc.reader = new Scanner(System.in);
 		
+		// Gets unit and type
+		uc.getInput();
+		
+		// Gets amount
+		System.out.print("Input number of unit: ");
+		uc.amount = uc.reader.nextDouble();
+		
+		uc.printConversions();
+		
+		uc.reader.close();
+		
+	}
+	
+	double amount;
+	
+	// Creates variables
+	String inputType;
+	
+	String inputUnit;
+	
+	Scanner reader;
+	
+	Unit unit = null;
+	
+	UnitType unitType;
+	
+	// Gets unit
+	
+	public void getInput () {
 		do {
 			
-			// Gets input
-			System.out.println("Enter unit type: ");
-			input = reader.nextLine().toLowerCase();
+			// Gets unit type
+			System.out.print("Enter unit type: ");
+			inputType = reader.nextLine().toLowerCase();
 			
 			// Gets unit type
-			switch (input) {
-			
+			switch (inputType.toLowerCase()) {
+				case "exit":
+					System.exit(0);
+					unitType = null;
+				break;
 				case "length":
 				case "l":
 				case "distance":
-				case "d":				
-					unitType = "length";
+				case "d":
+					unitType = UnitType.LENGTH;
+					
+					// Gets unit
+					do {
+						unit = readLengthUnit();
+					}
+					while (unit == Unit.INVALID);
 				break;
 				case "weight":
 				case "w":
+				case "mass":
+				case "m":
+					unitType = UnitType.MASS;
+					// Gets unit
+					do {
+						unit = readMassUnit();
+					}
+					while (unit == Unit.INVALID);
+				break;
 				case "power":
 				case "p":
-					unitType = input;
+					unitType = UnitType.POWER;
+					// Gets unit
+					do {
+						unit = readPowerUnit();
+					}
+					while (unit == Unit.INVALID);
 				break;
 				default:
-					unitType = "invalid";
+					unitType = UnitType.INVALID;
 				break;
 			
 			}
 			
 		}
-		while (unitType == "invalid");
-		
-		// Calls readDistanceUnit()
-		inputUnit = uc.readDistanceUnit(reader);
-		// outputUnit = uc.readDistanceUnit(reader);
-		
-		System.out.println("Input number of unit:");
-		double amount = reader.nextDouble();
-		
-		// Does conversions
-		switch (unitType) {
-			
-			case "length":
-				switch (inputUnit) {
-					
-					case "ft":
-						System.out.println(amount + " ft = " + (double) amount / 5280d + " mi");
-					break;
-					case "mi":
-						System.out.println(amount + " mi = " + (double) amount * 5280d + " ft");
-						System.out.println(amount + " mi = " + (double) amount * 0.62137119d + " km");
-					break;
-					case "km":
-						System.out.println(amount + " km = " + (double) amount / 0.62137119d + " mi");
-					break;
-					case "in":
-						System.out.println(amount + " in = " + (double) amount * 2.54d + " cm");
-					break;
-					case "cm":
-						System.out.println(amount + " cm = " + (double) amount / 2.54d + " in");
-					break;
-				}
-				break;
-			case "weight":
-				switch (inputUnit) {
-					
-					
-					
-				}
-			
-		}
-		
-		
-		System.out.println();
-		
-		reader.close();
-		
+		while (unitType == UnitType.INVALID);
 	}
 	
-	
-		
-		
-		
-	
-	
-	// Gets input for unit of distance
-	public String readDistanceUnit (Scanner reader) {
-		
-		// Initializes output
-		String output;
-		
-		// Loops until valid
-		do {
-			
-			// Makes call
-			System.out.println("Enter a unit:");
-			output = getDistanceUnit(reader.nextLine());
-			if (output == "invalid") {
-				
-				System.out.println("Input invalid");
-				
-			}
-		}
-		while (output == "invalid");
-		
-		return output;
-		
-	}
-	
-	// Gets unit of distance
-	public String getDistanceUnit (String input) {
-		
-		// Initializes output
-		String output;
+	// Gets unit of Length
+	public Unit getLengthUnit (String input) {
 		
 		// Sets output
-		switch (input) {
+		switch (input.toLowerCase()) {
 		
 			case "foot":
 			case "feet":
 			case "ft":
-				output = "ft";
-			break;
+				return Unit.FT;
 			case "mile":
 			case "miles":
 			case "mi":
-				output = "mi";
-			break;
+				return Unit.MI;
 			case "kilometer":
 			case "kilometre":
 			case "kilometers":
 			case "kilometres":
 			case "km":
-				output = "km";
-			break;
+				return Unit.KM;
 			case "inch":
 			case "inches":
 			case "in":
-				output = "in";
-			break;
+				return Unit.IN;
 			case "centimeter":
 			case "centimetre":
 			case "centimeters":
 			case "centimetres":
 			case "cm":
-				output = "cm";
-			break;
+				return Unit.CM;
 			default:
-				output = "invalid";
-			break;
+				return Unit.INVALID;
 		}
-		return output;
 		
 	}
 	
 	// Gets unit of weight
-	public String getWeightUnit ()
+	public Unit getMassUnit (String input) {
+		
+		// Uses switch statement to find unit
+		switch (input.toLowerCase()) {
+		
+			case "pound":
+			case "pounds":
+			case "lb":
+				return Unit.LB;
+			case "ounce":
+			case "ounces":
+			case "oz":
+				return Unit.OZ;
+			default:
+				return Unit.INVALID;
+		}
+		
+	}
+	
+	// Gets unit of power
+	public Unit getPowerUnit (String input) {
+		
+		// Uses switch statement to find unit
+				switch (input.toLowerCase()) {
+				
+					case "kilowatthour":
+					case "kilowatthours":
+					case "kwh":
+						return Unit.KWH;
+					case "horsepower":
+					case "hp":
+						return Unit.HP;
+					default:
+						return Unit.INVALID;
+				}
+		
+	}
 	
 	// Gets unit
 	public String getUnit (String input) {
+		
+		// Initializes output
 		String output;
 		// Sets output
-		switch (input) {
+		switch (input.toLowerCase()) {
 		
 			case "foot":
 			case "feet":
@@ -232,5 +228,159 @@ public class UnitConverter {
 			break;
 		}
 		return output;
+	}
+	
+	// Prints conversions
+	public void printConversions () {
+		
+		// Does conversions
+		switch (unitType) {
+		
+			case LENGTH:
+				switch (unit) {
+				
+					case FT:
+						System.out.println(amount + " " + Unit.FT + " = "
+								+ amount * 5280d + " " + Unit.MI);
+					break;
+					case MI:
+						System.out.println(amount + " " + Unit.MI + " = "
+								+ amount * 5280d + " " + Unit.MI);
+						System.out.println(amount + " " + Unit.MI + " = "
+								+ amount * 0.62137119d + " " + Unit.KM);
+					break;
+					case KM:
+						System.out.println(amount + " " + Unit.KM + " = "
+								+ amount / 0.62137119d + " " + Unit.MI);
+					break;
+					case IN:
+						System.out.println(amount + " " + Unit.IN + " = "
+								+ amount * 2.54d + " " + Unit.CM);
+					break;
+					case CM:
+						System.out.println(amount + " " + Unit.CM + " = "
+								+ amount / 2.54d + " " + Unit.IN);
+					break;
+					default:
+						throw new IllegalArgumentException("Unit invalid");
+				}
+			break;
+			case MASS:
+				switch (unit) {
+				
+					case LB:
+						System.out.println(amount + " " + Unit.LB + " = "
+								+ amount / 16 + " " + Unit.OZ);
+					break;
+					case OZ:
+						System.out.println(amount + " " + Unit.OZ + " = "
+								+ amount * 16 + " " + Unit.LB);
+					break;
+					default:
+						throw new IllegalArgumentException("Unit invalid");
+				}
+			case POWER:
+				switch (unit) {
+				
+					case KWH:
+						System.out.println(amount + " " + Unit.KWH + " = "
+								+ amount * 1.341003d + " " + Unit.HP);
+					break;
+					case HP:
+						System.out.println(amount + " " + Unit.HP + " = "
+								+ amount / 1.341003d + " " + Unit.KWH);
+					break;
+					default:
+						throw new IllegalArgumentException("Unit invalid");
+						
+				}
+			break;
+			default:
+			break;
+		
+		}
+		
+	}
+	
+	// Reads input for unit of Length
+	public Unit readLengthUnit () {
+		
+		// Initializes output
+		Unit input;
+		
+		// Loops until valid
+		do {
+			
+			// Makes call
+			System.out.print("Enter a unit: ");
+			input = getLengthUnit(reader.nextLine().toLowerCase());
+			
+			// If the input is invalid
+			if (input == Unit.INVALID) {
+				
+				System.out.println("Input invalid");
+				
+			}
+			
+		}
+		while (input == Unit.INVALID);
+		
+		return input;
+		
+	}
+	
+	// Reads input for unit of Mass
+	public Unit readMassUnit () {
+		
+		// Initializes output
+		Unit input;
+		
+		// Loops until valid
+		do {
+			
+			// Makes call
+			System.out.print("Enter a unit: ");
+			input = getMassUnit(reader.nextLine().toLowerCase());
+			
+			// If the input is invalid
+			if (input == Unit.INVALID) {
+				
+				System.out.println("Input invalid");
+				
+			}
+			
+		}
+		while (input == Unit.INVALID);
+		
+		return input;
+		
+	}
+	
+	// Reads input for unit of Power
+	
+	public Unit readPowerUnit () {
+		
+		// Initializes output
+		Unit input;
+		
+		// Loops until valid
+		do {
+			
+			// Makes call
+			System.out.print("Enter a unit: ");
+			input = getPowerUnit(reader.nextLine().toLowerCase());
+			
+			// If the input is invalid
+			if (input == Unit.INVALID) {
+				
+				System.out.println("Input invalid");
+				
+			}
+			
+		}
+		while (input == Unit.INVALID);
+		
+		return input;
+		
 	}
 }
