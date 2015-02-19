@@ -155,18 +155,18 @@ public class UnitConverter {
 	public Unit getPowerUnit (String input) {
 		
 		// Uses switch statement to find unit
-				switch (input.toLowerCase()) {
-				
-					case "kilowatthour":
-					case "kilowatthours":
-					case "kwh":
-						return Unit.KWH;
-					case "horsepower":
-					case "hp":
-						return Unit.HP;
-					default:
-						return Unit.INVALID;
-				}
+		switch (input.toLowerCase()) {
+		
+			case "kilowatthour":
+			case "kilowatthours":
+			case "kwh":
+				return Unit.KWH;
+			case "horsepower":
+			case "hp":
+				return Unit.HP;
+			default:
+				return Unit.INVALID;
+		}
 		
 	}
 	

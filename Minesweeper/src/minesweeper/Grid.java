@@ -3,7 +3,7 @@ package minesweeper;
 import java.util.Random;
 
 /**
- * @author andrew
+ * @author Andrew
  * 
  *         The grid of squares.
  *

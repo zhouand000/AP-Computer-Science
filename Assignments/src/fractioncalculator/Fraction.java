@@ -1,7 +1,7 @@
 package fractioncalculator;
 
 /**
- * @author zhouand000 Fraction class
+ * @author Andrew Fraction class
  */
 public class Fraction {
 	
@@ -35,7 +35,18 @@ public class Fraction {
 	public String toString () {
 		return numerator + "/" + denominator;
 	}
-
+	
+	/**
+	 * Converts the fraction into a double
+	 * 
+	 * @return the fraction as a double
+	 */
+	public double toDouble () {
+		
+		return (double) numerator / (double) denominator;
+		
+	}
+	
 	/**
 	 * Getter method for the numerator
 	 * 
@@ -67,7 +78,8 @@ public class Fraction {
 	/**
 	 * Setter method for the denominator
 	 * 
-	 * @param denominator the new denominator
+	 * @param denominator
+	 *            the new denominator
 	 */
 	public void setDenominator (int denominator) {
 		this.denominator = denominator;

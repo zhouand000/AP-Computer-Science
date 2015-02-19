@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * @author andrew
+ * @author Andrew
  * 
  *         The game
  *

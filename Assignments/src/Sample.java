@@ -1,14 +1,8 @@
 import java.util.Scanner;
 
-/**
- * @author andrew
- *
- */
+@SuppressWarnings("javadoc")
 public class Sample {
 	
-	/**
-	 * @param args
-	 */
 	public static void main (String[] args) {
 		
 		int inum;

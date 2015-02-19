@@ -1,7 +1,7 @@
 package battleship;
 
 /**
- * @author andrew
+ * @author Andrew
  * 
  *         The game
  *

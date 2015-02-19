@@ -1,7 +1,7 @@
 package minesweeper;
 
 /**
- * @author andrew
+ * @author Andrew
  * 
  *         The various difficulty levels
  * 

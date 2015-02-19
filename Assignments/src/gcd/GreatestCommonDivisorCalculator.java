@@ -17,7 +17,10 @@ public class GreatestCommonDivisorCalculator {
 		calc.reader = new Scanner(System.in);
 		
 		// Calls gcd method and prints
-		System.out.println("The GCD is: " + calc.getGreatestCommonDivisor(calc.readInt(), calc.readInt()));
+		System.out
+				.println("The GCD is: "
+						+ calc.getGreatestCommonDivisor(calc.readInt(),
+								calc.readInt()));
 		
 	}
 	
@@ -26,7 +29,7 @@ public class GreatestCommonDivisorCalculator {
 		
 		// Initializes output variable
 		int output;
-
+		
 		// Gets input
 		do {
 			

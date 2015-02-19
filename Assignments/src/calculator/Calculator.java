@@ -2,22 +2,19 @@ package calculator;
 
 import java.util.Scanner;
 
-/**
- * @author andrew
- *
- */
+@SuppressWarnings("javadoc")
 public class Calculator {
 	
-	/**
-	 * @param args
-	 */
 	public static void main (String[] args) {
+		
+		// Gets input
 		System.out.print("Radius: ");
-		Scanner scanner = new Scanner(System.in);
-		double radius = scanner.nextDouble();
-		scanner.close();
+		Scanner reader = new Scanner(System.in);
+		double radius = reader.nextDouble();
+		reader.close();
 		Sphere sphere = new Sphere(radius);
 		
+		// Prints properties
 		System.out.println("Radius: " + sphere.RADIUS);
 		System.out.println("Diameter: " + sphere.DIAMETER);
 		System.out.println("Circumference: " + sphere.CIRCUMFERENCE);

@@ -17,21 +17,23 @@ public class SimpleGridPathfinder {
 		pf.reader = new Scanner(System.in);
 		
 		// Makes call and prints result
-		System.out.println("There are " + pf.countPaths(pf.readInput(),pf.readInput()) + " paths.");
+		System.out.println("There are "
+				+ pf.countPaths(pf.readInput(), pf.readInput()) + " paths.");
 		
 	}
-
+	
 	// Recursively counts paths
 	public int countPaths (int street, int avenue) {
 		
-		// Uses ternary operator instead of if statement. Example of a place where it would be appropriate.
-		return (street == 1 || avenue == 1 ? 1 : countPaths(street - 1, avenue) + countPaths(street, avenue - 1));
-		
+		// Uses ternary operator instead of if statement. Example of a place
+		// where it would be appropriate.
+		return (street == 1 || avenue == 1 ? 1 : countPaths(street - 1, avenue)
+				+ countPaths(street, avenue - 1));
 		
 	}
-
+	
 	// Reads input
-	public int readInput() {
+	public int readInput () {
 		
 		// Creates output variable
 		int output;
@@ -44,10 +46,9 @@ public class SimpleGridPathfinder {
 			System.out.println();
 			
 		}
-		while (output <=1);
+		while (output <= 1);
 		return output;
 		
 	}
-		
 	
 }
