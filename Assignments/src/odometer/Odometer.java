@@ -6,23 +6,22 @@ package odometer;
  */
 public class Odometer {
 	
-	private double gas;
+	private double fuel;
 	
 	private double mileage;
 	
 	/**
-	 * Initializes mileage and gas variables
+	 * Initializes mileage and fuel variables
 	 */
 	public Odometer () {
 		
 		mileage = 0;
-		gas = 0;
+		fuel = 0;
 		
 	}
 	
-	
 	/**
-	 * Adds mileage
+	 * Adds mileage. Mileage should be greater than 0;
 	 * 
 	 * @param mileage
 	 *            Mileage
@@ -34,17 +33,29 @@ public class Odometer {
 	}
 	
 	/**
-	 * Adds mileage and gas used during trip
+	 * Adds fuel. Fuel should be greater than 0.
+	 * 
+	 * @param fuel
+	 *            Fuel
+	 */
+	public void addFuel (double fuel) {
+		
+		this.fuel += fuel;
+		
+	}
+	
+	/**
+	 * Adds mileage and fuel used during trip
 	 * 
 	 * @param mileage
 	 *            mileage to add
-	 * @param gas
-	 *            gas to add
+	 * @param fuel
+	 *            fuel to add
 	 */
-	public void addTrip (double mileage, double gas) {
+	public void addTrip (double mileage, double fuel) {
 		
-		mileage += mileage;
-		this.gas += gas;
+		this.mileage += mileage;
+		this.fuel += fuel;
 		
 	}
 	
@@ -55,18 +66,29 @@ public class Odometer {
 	 */
 	public double getEfficiency () {
 		
-		return (double) mileage / (double) gas;
+		return (double) mileage / (double) fuel;
 		
 	}
 	
 	/**
-	 * Gets the amount of gas used
+	 * Gets mileage
 	 * 
-	 * @return the amount of gas used
+	 * @return mileage
 	 */
-	public double getGas () {
+	public double getMileage () {
 		
-		return gas;
+		return mileage;
+		
+	}
+	
+	/**
+	 * Gets the amount of fuel used
+	 * 
+	 * @return the amount of fuel used
+	 */
+	public double getFuel () {
+		
+		return fuel;
 		
 	}
 	
@@ -76,16 +98,16 @@ public class Odometer {
 	public void reset () {
 		
 		mileage = 0;
-		gas = 0;
+		fuel = 0;
 		
 	}
 	
 	/**
-	 * Resets gas
+	 * Resets fuel
 	 */
-	public void resetGas () {
+	public void resetFuel () {
 		
-		gas = 0;
+		fuel = 0;
 		
 	}
 	
