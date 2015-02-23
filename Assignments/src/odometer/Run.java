@@ -152,6 +152,7 @@ public class Run {
 			
 		}
 		while (fuel < 0);
+		odometer.addFuel(fuel);
 		
 	}
 	
