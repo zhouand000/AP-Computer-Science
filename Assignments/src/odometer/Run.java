@@ -22,7 +22,9 @@ public class Run {
 	 */
 	public static void main (String[] args) {
 		
-		// Initializes Run object
+		/**
+		 * Initializes Run object
+		 */
 		Run r = new Run();
 		
 		while (r.mainMenu()){
@@ -30,6 +32,8 @@ public class Run {
 			reader.nextLine();
 			reader.nextLine();
 			}
+		
+		
 		
 	}
 	
