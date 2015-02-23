@@ -2,13 +2,24 @@ package odometer;
 
 import java.util.Scanner;
 
-@SuppressWarnings("javadoc")
+
+/**
+ * This is the launcher class
+ * 
+ * @author zhouand000
+ *
+ */
 public class Run {
 	
 	static Scanner reader = new Scanner(System.in);
 	
 	static Odometer odometer = new Odometer();
 	
+	/**
+	 * Main
+	 * 
+	 * @param args
+	 */
 	public static void main (String[] args) {
 		
 		// Initializes Run object
@@ -22,7 +33,9 @@ public class Run {
 		
 	}
 	
-	// Prints Main Menu text
+	/**
+	 * Prints Main Menu text
+	 */
 	public void printMainMenu () {
 		
 		System.out.println();
@@ -41,14 +54,20 @@ public class Run {
 		System.out.println();
 	}
 	
-	// The main menu
+
+	/**
+	 * Main menu method. Designed to exist inside a while loop, and will always return true unless the exit command is entered.
+	 * 
+	 * @return true if the method should run again.
+	 */
 	public boolean mainMenu() {
 		
 		printMainMenu();
 		// Gets option
 		System.out.print(":");
-		switch (reader.nextInt()) {
-		
+		int mode = reader.nextInt();
+		switch (mode) {
+			
 			case 1:
 				addMiles();
 				return true;
@@ -82,12 +101,15 @@ public class Run {
 			case 11:
 				System.exit(0);
 			default:
-				System.out.println("Invalid option.");
+				System.err.println("Invalid option.");
 				return true;
 		}
 		
 	}
 	
+	/**
+	 * Resets all odometer settings
+	 */
 	public void resetAll () {
 		
 		System.out.println("Resetting to factory defaults...");
@@ -96,6 +118,9 @@ public class Run {
 		
 	}
 
+	/**
+	 * Resets fuel usage
+	 */
 	public void resetFuel () {
 		
 		System.out.println("Resetting fuel...");
@@ -103,13 +128,19 @@ public class Run {
 		
 	}
 
+	/**
+	 * Resets mileage
+	 */
 	public void resetMileage () {
 		
 		System.out.println("Resetting mileage...");
 		odometer.resetMilage();
 		
 	}
-
+	
+	/**
+	 * Gets the mileage, fuel, and efficiency 
+	 */
 	public void getAll () {
 		
 		getMileage();
@@ -118,24 +149,38 @@ public class Run {
 		
 	}
 
+	/**
+	 * Gets fuel efficiency
+	 */
 	public void getEfficiency () {
 		
+		getMileage();
+		getFuel();
 		System.out.println(odometer.getFuel() != 0 ? "The efficiency is: " + odometer.getEfficiency() : "Please set the fuel usage first!");
 		
 	}
 
+	/**
+	 * Gets the fuel usage
+	 */
 	public void getFuel () {
 
 		System.out.println("The fuel usage is: " + odometer.getMileage());
 		
 	}
 
+	/**
+	 * Gets the mileage
+	 */
 	public void getMileage () {
 		
 		System.out.println("The mileage is: " + odometer.getMileage());
 		
 	}
-
+	
+	/**
+	 * Adds mileage and fuel usage
+	 */
 	public void addTrip () {
 
 		addMiles();
@@ -143,6 +188,9 @@ public class Run {
 		
 	}
 
+	/**
+	 * Adds fuel usage
+	 */
 	public void addFuel () {
 		
 		double fuel;
@@ -156,6 +204,9 @@ public class Run {
 		
 	}
 	
+	/**
+	 * Adds mileage
+	 */
 	public void addMiles () {
 		
 		double mileage;
