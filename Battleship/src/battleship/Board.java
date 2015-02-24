@@ -8,18 +8,30 @@ package battleship;
  */
 public class Board {
 	
-	// Initializes variables
+	// Creates variables
 	short size;
 	
-	Ship[][] shipArray;
+	Ship[][] grid;
 	
 	Board (short size) {
 		
 	}
 	
+	/**
+	 * Fills the board with ships
+	 */
 	public void fillBoard() {
 		
-		
+		for (int i = 0; i < grid.length; i ++) {
+			
+			for (int j = 0; i < grid[i].length; j++) {
+				
+				
+				
+				
+			}
+			
+		}
 		
 		
 		
