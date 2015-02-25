@@ -1,5 +1,7 @@
 package battleship;
 
+import java.util.Random;
+
 /**
  * @author Andrew
  * 
@@ -8,12 +10,14 @@ package battleship;
  */
 public class Board {
 	
+	static Random random = new Random(0);
+	
 	// Creates variables
 	short size;
 	
-	Ship[][] grid;
+	Sector[][] grid;
 	
-	Board (short size) {
+	Board (int i) {
 		
 	}
 	
@@ -22,12 +26,15 @@ public class Board {
 	 */
 	public void fillBoard() {
 		
+		
+		
+		
 		for (int i = 0; i < grid.length; i ++) {
 			
 			for (int j = 0; i < grid[i].length; j++) {
 				
-				
-				
+				// TODO Finish
+				grid[i][j] = null;
 				
 			}
 			
