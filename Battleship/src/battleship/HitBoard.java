@@ -1,6 +1,6 @@
 package battleship;
 
-public class HitBoard {
+public class HitBoard extends Board {
 	
 	boolean[][] board;
 	

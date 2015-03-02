@@ -10,14 +10,23 @@ import java.util.Random;
  */
 public class Board {
 	
+	Board(int size){
+		
+		this.size = size;
+		
+	}
+	
 	static Random random = new Random(0);
 	
 	// Creates variables
-	short size;
+	int size;
 	
 	Sector[][] grid;
 	
-	Board (int i) {
+	
+	public void placeShip (ShipType) {
+		
+		
 		
 	}
 	
