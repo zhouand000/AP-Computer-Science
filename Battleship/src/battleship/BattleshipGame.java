@@ -1,5 +1,7 @@
 package battleship;
 
+import java.util.ArrayList;
+
 /**
  * @author Andrew
  * 
@@ -9,6 +11,8 @@ package battleship;
 public class BattleshipGame {
 	
 	Board board;
+	
+	ArrayList<Ship> shipArray;
 	
 	/**
 	 * @param args
@@ -22,6 +26,24 @@ public class BattleshipGame {
 		
 	}
 	
-	
+	/**
+	 * @param x x coord
+	 * @param y y coord
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * @return true if a ship is hit
+	 */
+	public boolean fire(int x, int y) {
+		
+		
+		
+		
+		return false;
+				
+	}
 	
 }

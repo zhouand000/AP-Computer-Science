@@ -53,6 +53,12 @@ public class Board {
 		
 	}
 	
+	public void placeShip() {
+		
+		
+		
+		
+	}
 	
 	
 }

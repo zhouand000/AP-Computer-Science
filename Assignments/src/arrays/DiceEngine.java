@@ -99,7 +99,7 @@ public class DiceEngine {
 	}
 	
 	// Compares two arrays, and sees if they are combinations
-	public static boolean isCombinationEqual (int[] a, int[] b) {
+	public boolean isCombinationEqual (int[] a, int[] b) {
 		
 		Arrays.sort(a);
 		Arrays.sort(b);
