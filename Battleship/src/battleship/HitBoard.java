@@ -6,6 +6,7 @@ public class HitBoard extends Board {
 	
 	public HitBoard(int size) {
 		
+		super(size);
 		board = new boolean[size][size];
 		
 	}

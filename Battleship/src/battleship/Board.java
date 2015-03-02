@@ -24,9 +24,9 @@ public class Board {
 	Sector[][] grid;
 	
 	
-	public void placeShip (ShipType) {
+	public void placeShip (final ShipType type) {
 		
-		
+		int shipSize = type.getSize();
 		
 	}
 	
@@ -55,8 +55,12 @@ public class Board {
 	
 	public void placeShip() {
 		
-		
-		
+		boolean sucess = false;
+		while(!sucess) {
+			
+			
+			
+		}
 		
 	}
 	

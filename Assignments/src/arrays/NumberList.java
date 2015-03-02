@@ -6,14 +6,32 @@ import java.util.Random;
 @SuppressWarnings("javadoc")
 public class NumberList {
 	
-	public static void main (String[] args) {
+	// Initializers
+	// Creates Scanner and Random objects
+	Scanner reader = new Scanner(System.in);
+	
+	Random random = new Random(0);
+	
+	// Creates arrays
+	Integer[] numbers = new Integer[100];
+	
+	String[] countOutput = new String[numbers.length];
+	
+	// Initializes count and set every value to 0
+	int[] count = new int[numbers.length];
+	{
+		for (int i : count) {
+			
+			count[i] = 0;
+			
+		}
+	}
+	
+	public void run () {
 		
-		// Creates Scanner and Random objects
-		Scanner reader = new Scanner(System.in);
-		Random random = new Random(0);
-		
-		// Creates array
-		Integer[] numbers = new Integer[100];
+	}
+	
+	public void initNumbersArray () {
 		
 		// Fills array
 		for (int i = 0; i < numbers.length; i++) {
@@ -27,23 +45,12 @@ public class NumberList {
 		// Sorts array
 		numbers = selectionSort(numbers);
 		
-		// Initializes count and set every value to 0
-		int[] count = new int[numbers.length];
-		for (int i : count) {
-			
-			count[i] = 0;
-			
-		}
-		
-		// Counts numbers
-		for (int i : numbers) {
-			
-			count[numbers[i]]++;
-			
-		}
+	}
+	
+	public void initCountOutputArray () {
 		
 		// This is the array that will get printed out
-		String[] countOutput = new String[numbers.length];
+		
 		for (int i = 0; i < numbers.length; i++) {
 			
 			countOutput[i] = "There "
@@ -53,6 +60,24 @@ public class NumberList {
 					+ (count[i] > 1 || count[i] == 0 ? "s" : "") + ".";
 			
 		}
+		
+	}
+	
+	public void count () {
+		
+		// Counts numbers
+		for (int i : numbers) {
+			
+			count[numbers[i]]++;
+			
+		}
+		
+	}
+	
+	public static void main (String[] args) {
+		
+		NumberList nl = new NumberList();
+		nl.run();
 		
 		// Prints sorted array
 		printArray(numbers);

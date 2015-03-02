@@ -10,31 +10,45 @@ import java.util.Scanner;
 @SuppressWarnings("javadoc")
 public class DiceEngine {
 	
-	public static void main (String[] args) {
-		
-		// Creates Scanner and Random
-		Scanner reader = new Scanner(System.in);
-		Random random = new Random(0);
-		
+	// Initializer for Scanner and Random
+	Scanner reader = new Scanner(System.in);
+	
+	Random random = new Random(0);
+	
+	private int rolls;
+	
+	private int dice;
+	
+	// Initializer
+	{
 		// Gets number of rolls
 		System.out.print("Number of rolls: \n:");
-		int rolls = reader.nextInt();
+		rolls = reader.nextInt();
 		
 		// Gets number of dice
 		System.out.print("Number of Dice: \n:");
-		int dice = reader.nextInt();
+		dice = reader.nextInt();
+	}
+	
+	private int[][] rollArrays = new int[rolls][dice];
+	
+	// Creates stringArrayList and countArrayList
+	private ArrayList<String> stringArrayList = new ArrayList<String>();
+	
+	private ArrayList<Integer> countArrayList = new ArrayList<Integer>();
+	
+	public static void main (String[] args) {
 		
-		// Closes Scanner
-		reader.close();
+		// Creates DiceEngine
+		new DiceEngine().run();
 		
-		// Creates array
-		int[][] rollArray = new int[rolls][dice];
+	}
+	
+	public void readConfig () {
 		
-		// Creates stringArrayList and countArrayList
-		
-		ArrayList<String> stringArrayList = new ArrayList<String>();
-		
-		ArrayList<Integer> countArrayList = new ArrayList<Integer>();
+	}
+	
+	public void getRolls () {
 		
 		// Loops and gets rolls and prints, and counts the number of each
 		// combination
@@ -45,15 +59,15 @@ public class DiceEngine {
 			for (int j = 0; j < dice; j++) {
 				
 				// The +1 is to move from [0,5] to [1,6]
-				rollArray[i][j] = random.nextInt(5) + 1;
+				rollArrays[i][j] = random.nextInt(5) + 1;
 				
 			}
 			
 			// Sorts the dice
-			Arrays.sort(rollArray[i]);
+			Arrays.sort(rollArrays[i]);
 			
 			// Creates String to output
-			String output = Arrays.toString(rollArray[i]);
+			String output = Arrays.toString(rollArrays[i]);
 			
 			// Prints the dice roll
 			System.out.println(output);
@@ -85,6 +99,9 @@ public class DiceEngine {
 			
 		}
 		
+	}
+	
+	public void printResults () {
 		// Prints out the frequency table
 		System.out.println("There was/were: ");
 		for (int i = 0; i < stringArrayList.size(); i++) {
@@ -93,8 +110,13 @@ public class DiceEngine {
 					+ stringArrayList.get(i) + "\n");
 			
 		}
+	}
+	
+	public void run () {
 		
-		// System.out.println(Arrays.deepToString(stringArray));
+		readConfig();
+		getRolls();
+		printResults();
 		
 	}
 	
