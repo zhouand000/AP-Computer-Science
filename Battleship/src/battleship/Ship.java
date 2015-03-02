@@ -6,20 +6,20 @@ package battleship;
  */
 public class Ship {
 	
+	Ship (ShipType type) {
+		
+		this.size = type.getSize();
+		
+	}
+	
 	// Initializes fields
 	final int size;
-	
-	/**
-	 * Name of the Ship
-	 */
-	public final String name;
 	
 	private Short[] hits;
 	
 	private boolean[] hasDamage;
 	
 	private boolean isSunk = false;
-	
 	
 	// Creates a ship with size size
 	Ship (Short size) {
