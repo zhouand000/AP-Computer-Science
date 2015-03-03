@@ -5,15 +5,42 @@ import java.util.Scanner;
 @SuppressWarnings("javadoc")
 public class SpeedingStatistics {
 	
+	// Initializes reader
+	Scanner reader = new Scanner(System.in);
+	
+	// Initializes SpeedingStatistics
+	SpeedingStatistics ss = new SpeedingStatistics();
+	
+	// Initializes array
+	double[] speedArray = new double[10];
+	
 	public static void main (String[] args) {
 		
-		// Initializes reader
-		Scanner reader = new Scanner(System.in);
-		// Initializes SpeedingStatistics
-		SpeedingStatistics ss = new SpeedingStatistics();
+		SpeedingStatistics stat = new SpeedingStatistics();
 		
-		// Initializes array
-		double[] speedArray = new double[10];
+	}
+	
+	public int numberInRange (int low, int high, double[] array) {
+		
+		// Initializes number
+		int number = 0;
+		for (int i = 0; i < 10; i++) {
+			
+			// Checks if the element is above or equal to low and lower or equal
+			// to high
+			if (array[i] >= low && array[i] <= high) {
+				
+				number++;
+				
+			}
+			
+		}
+		
+		return number;
+		
+	}
+	
+	public void run () {
 		
 		// Fills array with inputs
 		for (int i = 0; i < 10; i++) {
@@ -61,25 +88,6 @@ public class SpeedingStatistics {
 		
 		// Closes reader
 		reader.close();
-	}
-	
-	public int numberInRange (int low, int high, double[] array) {
-		
-		// Initializes number
-		int number = 0;
-		for (int i = 0; i < 10; i++) {
-			
-			// Checks if the element is above or equal to low and lower or equal
-			// to high
-			if (array[i] >= low && array[i] <= high) {
-				
-				number++;
-				
-			}
-			
-		}
-		
-		return number;
 		
 	}
 	

@@ -15,10 +15,11 @@ public class NumberList {
 	// Creates arrays
 	Integer[] numbers = new Integer[100];
 	
-	String[] countOutput = new String[numbers.length];
-	
 	// Initializes count and set every value to 0
 	int[] count = new int[numbers.length];
+	
+	String[] countOutput = new String[numbers.length];
+	
 	{
 		for (int i : count) {
 			
@@ -27,23 +28,26 @@ public class NumberList {
 		}
 	}
 	
-	public void run () {
+	public static void main (String[] args) {
+		
+		NumberList nl = new NumberList();
+		nl.run();
 		
 	}
 	
-	public void initNumbersArray () {
+	public static String tmp (int i) {
 		
-		// Fills array
-		for (int i = 0; i < numbers.length; i++) {
+		return (i % 10 == 9 && i != 0 ? "\n" : "\t");
+	}
+	
+	public void count () {
+		
+		// Counts numbers
+		for (int i : numbers) {
 			
-			// Sets element i in numbers to a value from [1,100]; the + 1 is to
-			// move it from [0,99]
-			numbers[i] = random.nextInt(100) + 1;
+			count[i]++;
 			
 		}
-		
-		// Sorts array
-		numbers = selectionSort(numbers);
 		
 	}
 	
@@ -63,48 +67,47 @@ public class NumberList {
 		
 	}
 	
-	public void count () {
+	public void initNumbersArray () {
 		
-		// Counts numbers
-		for (int i : numbers) {
+		// Fills array
+		for (int i = 0; i < numbers.length; i++) {
 			
-			count[numbers[i]]++;
+			// Sets element i in numbers to a value from [1,100]; the + 1 is to
+			// move it from [0,99]
+			numbers[i] = random.nextInt(100) + 1;
 			
 		}
 		
-	}
-	
-	public static void main (String[] args) {
-		
-		NumberList nl = new NumberList();
-		nl.run();
-		
-		// Prints sorted array
-		printArray(numbers);
-		
-		// Prints reversed array
-		printArray(reverseArray(numbers));
-		
-		// Prints the # of each number
-		printArray(countOutput);
-		
-		// Closes reader
-		reader.close();
+		// Sorts array
+		numbers = selectionSort(numbers);
 		
 	}
 	
-	public static void printArray (int[] array) {
+	public void printArray (int[] array) {
 		
-		// Uses enhanced for loop to print everything
+		// Uses for loop to print everything
 		for (int i = 0; i < array.length; i++) {
 			
-			System.out.print(array[i] + "\n");
+			System.out.print(array[i] + ","
+					+ tmp(i));
 			
 		}
-		
+		System.out.println();
 	}
 	
-	public static <T> void printArray (T[] array) {
+	public void printArray (Integer[] array) {
+		
+		// Uses for loop to print everything
+		for (int i = 0; i < array.length; i++) {
+			
+			System.out.print(array[i] + ","
+					+ tmp(i));
+			
+		}
+		System.out.println();
+	}
+	
+	public <T> void printArray (T[] array) {
 		
 		// Uses for loop to print everything
 		for (int i = 0; i < array.length; i++) {
@@ -115,7 +118,7 @@ public class NumberList {
 		
 	}
 	
-	public static int[] reverseArray (Integer[] array) {
+	public int[] reverseArray (Integer[] array) {
 		
 		// Creates temporary array
 		int[] temp = new int[array.length];
@@ -131,7 +134,28 @@ public class NumberList {
 		
 	}
 	
-	public static <T extends Comparable<? super T>> T[] selectionSort (T[] arr) {
+	public void run () {
+		
+		// Initializes stuff
+		initNumbersArray();
+		count();
+		initCountOutputArray();
+		
+		// Prints sorted array
+		printArray(numbers);
+		
+		// Prints reversed array
+		printArray(reverseArray(numbers));
+		
+		// Prints the # of each number
+		printArray(countOutput);
+		
+		// Closes reader
+		reader.close();
+		
+	}
+	
+	public <T extends Comparable<? super T>> T[] selectionSort (T[] arr) {
 		
 		// Initializes variables used for sorting
 		
