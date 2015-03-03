@@ -30,6 +30,10 @@ public enum ShipType {
 	 */
 	SUBMARINE("Submarine", 2),
 	/**
+	 * Custom
+	 */
+	CUSTOM("Custom",0),
+	/**
 	 * Other
 	 */
 	OTHER("Other", 0),

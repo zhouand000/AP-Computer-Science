@@ -10,9 +10,17 @@ import java.util.ArrayList;
  */
 public class BattleshipGame {
 	
-	Board board;
 	
-	ArrayList<Ship> shipArray;
+	
+	public ShipBoard playerShipBoard;
+	
+	public ShipBoard enemyShipBoard;
+	
+	public HitBoard playerHitBoard;
+	
+	public HitBoard computerHitBoard;
+	
+	public ArrayList<Ship> shipArray;
 	
 	/**
 	 * @param args
@@ -21,7 +29,7 @@ public class BattleshipGame {
 		
 		System.err.println("Not complete yet.");
 		BattleshipGame game = new BattleshipGame();
-		game.board = new Board(10);
+		game.playerShipBoard = new ShipBoard(10);
 		
 		
 	}
