@@ -55,5 +55,17 @@ public class ShipBoard extends Board {
 		int shipSize = type.getSize();
 		
 	}
+
+	@Override
+	public void printBoard () {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getString () {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

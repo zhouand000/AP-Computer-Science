@@ -13,16 +13,26 @@ public class Ship {
 	private boolean isSunk = false;
 	
 	// Initializes fields
-	final int size;
+	public final int size;
+	public final String name;
 	
+	
+	/**
+	 * @param type Type of ship
+	 */
 	public Ship (ShipType type) {
 		
-		this (type.getSize());
+		this (type.getSize(), type.getName());
+		
+		
+		
 		
 	}
 	
-	// Creates a ship with size size
-	Ship (int size) {
+	/**
+	 * @param size Size of ship
+	 */
+	public Ship (int size, String name) {
 		
 		// Sets the field size to size
 		this.size = size;
@@ -33,6 +43,8 @@ public class Ship {
 		// Initializes the hasDamage array
 		this.hasDamage = new boolean[size];
 		
+		// Sets name
+		this.name = name;
 	}
 	
 	/**

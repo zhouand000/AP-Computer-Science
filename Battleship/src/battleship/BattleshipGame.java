@@ -1,6 +1,7 @@
 package battleship;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * @author Andrew
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  */
 public class BattleshipGame {
 	
-	
+	public int size;
 	
 	public ShipBoard playerShipBoard;
 	
@@ -21,6 +22,8 @@ public class BattleshipGame {
 	public HitBoard computerHitBoard;
 	
 	public ArrayList<Ship> shipArray;
+	
+	static public Scanner reader = new Scanner(System.in) ;
 	
 	/**
 	 * @param args
@@ -54,4 +57,28 @@ public class BattleshipGame {
 				
 	}
 	
+	
+	public int[] getCoordinates() {
+		
+		int[] output = new int[2];
+		
+		System.out.println("Enter coordinates: ");
+		System.out.print(":");
+		
+		
+		return output;
+		
+		
+		
+	}
+	
+	
+	public boolean validateCoordinates(int[] coordinates){
+		
+		if (coordinates[0] < size && coordinates[1] < size && coordinates[0] >= 0 && coordinates[1] >= 0) {
+			return true;
+		}
+		else return false;
+		
+	}
 }

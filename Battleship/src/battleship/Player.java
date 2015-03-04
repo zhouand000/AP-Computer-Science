@@ -24,6 +24,10 @@ public class Player {
 		
 	}
 	
-	public void fire()
+	public void fire() {
+		
+		
+		
+	}
 	
 }
