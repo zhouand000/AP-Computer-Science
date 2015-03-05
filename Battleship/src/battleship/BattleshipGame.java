@@ -1,6 +1,7 @@
 package battleship;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -23,16 +24,30 @@ public class BattleshipGame {
 	
 	public ArrayList<Ship> shipArray;
 	
-	static public Scanner reader = new Scanner(System.in) ;
+	static public Scanner reader = new Scanner(System.in);
+	
+	static public Random random = new Random();
+	
+	public Config config;
 	
 	/**
 	 * @param args
 	 */
 	public static void main (String[] args) {
 		
-		System.err.println("Not complete yet.");
+		
 		BattleshipGame game = new BattleshipGame();
+		game.init();
 		game.playerShipBoard = new ShipBoard(10);
+		
+		
+		
+	}
+	
+	public void init() {
+		
+		config = new Config();
+		
 		
 		
 	}

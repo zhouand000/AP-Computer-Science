@@ -12,8 +12,8 @@ public class Config {
 	private BufferedWriter bw;
 	private Scanner scanner;
 	
-	public String name;
-	
+	public String playerName;
+	public long seed;
 	
 	
 	
@@ -28,11 +28,19 @@ public class Config {
 			}
 			
 			br = new BufferedReader(new FileReader(config));
-			bw = new BufferedWriter(new FileWriter(config));
+			bw = new BufferedWriter(new FileWriter(config, true));
 			scanner = new Scanner(br);
+			
+			
 			if (isNewConfig){
 				
-				writeln("name = " + name);
+				writeln("name = " + playerName);
+				writeln("seed = " + seed);
+				
+			}
+			else {
+				
+				
 				
 			}
 		}
@@ -48,6 +56,8 @@ public class Config {
 	
 	public Config(){
 		
+		init();
+		
 	}
 	
 	public void writeln(String s) throws IOException{
@@ -56,9 +66,9 @@ public class Config {
 		
 	}
 	
-	public boolean getConfig(){
+	public String getPlayerName(){
 		
-		
+		return playerName;
 		
 	}
 
@@ -68,8 +78,29 @@ public class Config {
 		return isNewConfig;
 	}
 
-
-
+	public void readConfig() throws IOException {
+		
+		while (scanner.hasNextLine()){
+			
+			String input = scanner.nextLine();
+			if (input.contains(playerName)) {
+				playerName = input.replaceAll("[\\s]", "").split("=")[1];
+			}
+			else if (input.contains(Long.toString(seed))) {
+				
+				seed = Long.parseLong(input.replaceAll("[\\s]", "").split("=")[1]);
+				
+			}
+			
+		}
+	}
+	
+	public void setConfig() {
+		
+		
+		
+	}
+	
 	public void setNewConfig (boolean isNewConfig) {
 		this.isNewConfig = isNewConfig;
 	}

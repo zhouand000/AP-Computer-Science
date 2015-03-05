@@ -1,5 +1,7 @@
 package battleship;
 
+import java.util.ArrayList;
+
 /**
  * @author Andrew
  *
@@ -14,28 +16,21 @@ public class Ship {
 	
 	// Initializes fields
 	public final int size;
+	
 	public final String name;
 	
+	public ShipType type;
+	
+	private ArrayList<Sector> locationArray = new ArrayList<Sector>();
 	
 	/**
-	 * @param type Type of ship
+	 * @param type
+	 *            Type of ship
 	 */
 	public Ship (ShipType type) {
 		
-		this (type.getSize(), type.getName());
-		
-		
-		
-		
-	}
-	
-	/**
-	 * @param size Size of ship
-	 */
-	public Ship (int size, String name) {
-		
 		// Sets the field size to size
-		this.size = size;
+		this.size = type.getSize();
 		
 		// Initializes the hit array
 		this.hits = new Short[size];
@@ -44,7 +39,11 @@ public class Ship {
 		this.hasDamage = new boolean[size];
 		
 		// Sets name
-		this.name = name;
+		this.name = type.getName();
+		
+		// Sets type
+		this.type = type;
+		
 	}
 	
 	/**
@@ -55,11 +54,15 @@ public class Ship {
 	 *            Changes the status of the ship.
 	 * 
 	 */
-	public void hit (Short position) {
+	public void hit (int position) {
 		
 		this.hits[position]++;
 		this.hasDamage[position] = true;
-		
+		if (isSunk()) {
+			
+			onSink();
+			
+		}
 	}
 	
 	// Checks if the ship is sunk;
@@ -82,6 +85,18 @@ public class Ship {
 		}
 		
 		return true;
+		
+	}
+	
+	/**
+	 * Will run when the ship is sunk
+	 */
+	public void onSink () {
+		
+		System.out.println("You have sunk the " + type.getName() + " " + name
+				+ "!");
+		
+		
 		
 	}
 	

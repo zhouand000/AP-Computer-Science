@@ -20,6 +20,7 @@ public class ShipBoard extends Board {
 	ShipBoard (int size) {
 		
 		this.size = size;
+		this.grid = new Sector[size][size];
 		
 	}
 	
@@ -41,6 +42,9 @@ public class ShipBoard extends Board {
 		
 	}
 	
+	/**
+	 * Places ship
+	 */
 	public void placeShip () {
 		
 		boolean sucess = false;
@@ -50,18 +54,76 @@ public class ShipBoard extends Board {
 		
 	}
 	
+	/**
+	 * @param type the type of ship to place
+	 */
 	public void placeShip (final ShipType type) {
 		
-		int shipSize = type.getSize();
+		boolean sucess = false;
+		
+		
+		while (!sucess) {
+			int shipSize = type.getSize();
+			int xCoord = random.nextInt(size);
+			int yCoord = random.nextInt(size);
+			byte direction = (byte) random.nextInt(2);
+			sucess = checkDirection((direction == 0 ? Direction.DOWN
+					: Direction.RIGHT), shipSize, xCoord, yCoord);
+			
+		}
 		
 	}
-
+	
+	/**
+	 * @param direction The direction to check
+	 * @param shipSize
+	 * @param xCoord
+	 * @param yCoord
+	 * @return True if the direction is valid
+	 */
+	public boolean checkDirection (Direction direction, int shipSize,
+			int xCoord, int yCoord) {
+		
+		switch (direction) {
+			case DOWN:
+				
+				for (int i = 0; i < shipSize; i++) {
+					
+					// Checks if the conditions are not valid
+					if (yCoord + i >= size || grid[xCoord][yCoord + i] != null) {
+						
+						return false;
+						
+					}
+					
+				}
+			break;
+			case RIGHT:
+				for (int i = 0; i < shipSize; i++) {
+					
+					// Checks if the conditions are not valid
+					if (xCoord + i >= size || grid[xCoord + i][yCoord] != null) {
+						
+						return false;
+						
+					}
+					
+				}
+			
+			break;
+		
+		}
+		return true;
+		
+	}
+	
 	@Override
 	public void printBoard () {
-		// TODO Auto-generated method stub
+		
+		System.out.println(getString());
 		
 	}
-
+	
 	@Override
 	public String getString () {
 		// TODO Auto-generated method stub

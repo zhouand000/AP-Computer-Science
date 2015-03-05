@@ -7,22 +7,61 @@ package battleship;
  */
 public class Sector {
 	
-	private boolean hasShip = false;
+	private boolean hasShip;
 	private Ship ship;
-	private Short position;
+	/**
+	 * The X coordinate
+	 */
+	public int xCoord;
+	/**
+	 * The y coordinate
+	 */
+	public int yCoord;
+	/**
+	 * The position of the sector along the ship
+	 */
+	public int position;
+	/**
+	 * If the sector has been hit
+	 */
+	public boolean hasHit;
 	
-	Sector () {
+	/**
+	 * Default Constructor
+	 */
+	public Sector() {
 		
 		hasShip = false;
 		setShip(null);
+		xCoord = -1;
+		yCoord = -1;
 		position = -1;
+		hasHit = false;
 		
 	}
 	
-	Sector (Ship ship, short position) {
+	public Sector (int xCoord, int yCoord) {
+		
+		this.xCoord = xCoord;
+		this.yCoord = yCoord;
+		setShip(null);
+		position = -1;
+		hasHit = false;
+		
+	}
+	
+	/**
+	 * @param ship The ship at this location
+	 * @param xCoord The xCoord of the sector
+	 * @param yCoord The yCoord of the Sector
+	 * @param position The position of the ship on the 
+	 */
+	public Sector (Ship ship, int xCoord, int yCoord, int position) {
 		
 		hasShip = true;
 		this.setShip(ship);
+		this.xCoord = xCoord;
+		this.yCoord = yCoord;
 		this.position = position;
 		
 	}
@@ -38,6 +77,7 @@ public class Sector {
 			
 		}
 		
+		
 	}
 	
 	/**
@@ -51,7 +91,9 @@ public class Sector {
 	 * @param ship
 	 */
 	public void setShip (Ship ship) {
+		
 		this.ship = ship;
+		
 	}
 	
 }

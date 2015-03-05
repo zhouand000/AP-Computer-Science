@@ -8,15 +8,12 @@ public class SpeedingStatistics {
 	// Initializes reader
 	Scanner reader = new Scanner(System.in);
 	
-	// Initializes SpeedingStatistics
-	SpeedingStatistics ss = new SpeedingStatistics();
-	
 	// Initializes array
 	double[] speedArray = new double[10];
 	
 	public static void main (String[] args) {
 		
-		SpeedingStatistics stat = new SpeedingStatistics();
+		new SpeedingStatistics().run();
 		
 	}
 	
@@ -52,7 +49,7 @@ public class SpeedingStatistics {
 		}
 		
 		// Sorts speedArray
-		speedArray = ss.selectionSort(speedArray);
+		speedArray = selectionSort(speedArray);
 		
 		// Prints highest element
 		System.out.println("The highest speed is: " + speedArray[9]);
@@ -78,13 +75,13 @@ public class SpeedingStatistics {
 		// Gets the number of people with a speed 0-10 over, etc.
 		System.out
 				.println("The number of people with a speed 0-10 uph over the speed limit is: "
-						+ ss.numberInRange(55, 65, speedArray));
+						+ numberInRange(55, 65, speedArray));
 		System.out
 				.println("The number of people with a speed 10-20 uph over the speed limit is: "
-						+ ss.numberInRange(65, 75, speedArray));
+						+ numberInRange(65, 75, speedArray));
 		System.out
 				.println("The number of people with a speed 20 uph or greater over the speed limit is: "
-						+ ss.numberInRange(55, Integer.MAX_VALUE, speedArray));
+						+ numberInRange(55, Integer.MAX_VALUE, speedArray));
 		
 		// Closes reader
 		reader.close();
