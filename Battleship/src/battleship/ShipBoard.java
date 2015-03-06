@@ -122,6 +122,7 @@ public class ShipBoard extends Board {
 		
 		System.out.println(getString());
 		
+		
 	}
 	
 	@Override
