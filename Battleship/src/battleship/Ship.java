@@ -70,9 +70,10 @@ public class Ship {
 	 *            array indices
 	 * 
 	 *            Changes the status of the ship.
+	 * @return true if there was a hit;
 	 * 
 	 */
-	public void hit (int position) {
+	public boolean hit (int position) {
 		
 		this.hits[position]++;
 		this.hasDamage[position] = true;
@@ -81,10 +82,12 @@ public class Ship {
 			onSink();
 			
 		}
+		return true;
+		
 	}
 	
-	// Checks if the ship is sunk;
 	/**
+	 * Checks if the ship is sunk;
 	 * @return If the ship is sunk, return true.
 	 */
 	public boolean isSunk () {

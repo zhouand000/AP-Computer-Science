@@ -68,6 +68,8 @@ public class BattleshipGame {
 		config = new Config();
 		log = new Log();
 		
+		this.size = 10;
+		
 		random = new Random(config.getSeed());
 		
 		shipClassArray = new ArrayList<ShipType>();
@@ -81,6 +83,8 @@ public class BattleshipGame {
 		shipClassArray.add(ShipType.FRIGATE);
 		shipClassArray.add(ShipType.FRIGATE);
 		
+		player = new Player(config.getPlayerName());
+		computer = new ComputerPlayer();
 		
 	}
 	
@@ -92,6 +96,7 @@ public class BattleshipGame {
 		BattleshipGame game = new BattleshipGame();
 		game.init();
 		game.run();
+											
 		
 	}
 	
@@ -109,10 +114,16 @@ public class BattleshipGame {
 	 */
 	public void run(){
 		
-		boolean win = true;
+		int hitCount = 0;
+		boolean win = false;
 		while(!win) {
 			
-			
+			computer.shipBoard.printBoard();
+			if (player.fire()) {
+				
+				hitCount++;
+				
+			}
 			
 		}
 		

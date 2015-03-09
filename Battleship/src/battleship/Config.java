@@ -35,15 +35,17 @@ public class Config {
 		
 		try {
 			
-			if (configFile.createNewFile()|| true) {
-				
+			if (!configFile.exists()) {
+				configFile.createNewFile();
 				isNewConfig = true;
 				
 			}
-			configFile.createNewFile();
+			
 			br = new BufferedReader(new FileReader(configFile));
-			bw = new BufferedWriter(new FileWriter(configFile, true));
 			fileScanner = new Scanner(br);
+			loadConfig();
+			bw = new BufferedWriter(new FileWriter(configFile, true));
+			
 			
 			if (isNewConfig) {
 				
@@ -91,7 +93,7 @@ public class Config {
 				System.out.print("Please enter your name:\n:");
 				playerName = BattleshipGame.scanner.nextLine();
 			}
-			while (playerName == "");
+			while (playerName.replaceAll("[\\s]", "") == "");
 			
 			
 			

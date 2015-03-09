@@ -10,16 +10,22 @@ import java.util.Random;
  */
 public class ShipBoard extends Board {
 	
-	BattleshipGame game = BattleshipGame.getInstance();
+	/**
+	 * Reference to the BattleshipGame
+	 */
+	final public BattleshipGame game = BattleshipGame.getInstance();
 	
-	static Random random = new Random(0);
+	Random random = game.random; 
 	
 	private Sector[][] grid;
 	
 	// Creates variables
 	int size;
 	
-	ShipBoard (int size) {
+	/**
+	 * @param size the size
+	 */
+	public ShipBoard (int size) {
 		
 		this.size = size;
 		this.grid = new Sector[size][size];
@@ -163,6 +169,18 @@ public class ShipBoard extends Board {
 		
 	}
 	
+	/**
+	 * @param xCoord x coordinate
+	 * @param yCoord y coordinate
+	 * @return true if a ship was hit
+	 */
+	public boolean hit (int xCoord, int yCoord) {
+		
+		grid[xCoord][yCoord].hit();
+		return true;
+		
+	}
+	
 	@Override
 	public void printBoard () {
 		
@@ -173,17 +191,33 @@ public class ShipBoard extends Board {
 	@Override
 	public String getString () {
 		
-		String output;
+		String output = "  | ";
+		
 		
 		for (int i = 0; i < size; i++) {
 			
+			output += i + " ";
+			
+		}
+		
+		output += "\n\u2012\u2012+";
+		
+		for (int i = 0; i < size; i++) {
+			
+				output += "\u2012\u2012";		
+			
+		}
+		
+		output += "\n";
+		
+		for (int i = 0; i < size; i++) {
+			output += i + " | ";
 			for (int j = 0; j < size; j++) {
 				
-				
-				// TODO FINISH
+				output += grid[i][j].toChar() + " ";			
 				
 			}
-			
+			output += "\n";
 		}
 		
 		return output;

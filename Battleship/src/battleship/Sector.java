@@ -81,14 +81,16 @@ public class Sector {
 	
 	/**
 	 * Adds a hit to the ship at the current position
+	 * @return true if the ship was hit
 	 */
-	public void hit () {
+	public boolean hit () {
 		
 		if (hasShip) {
 			
-			getShip().hit(position);
+			return getShip().hit(position);
 			
 		}
+		else return false;
 		
 	}
 	

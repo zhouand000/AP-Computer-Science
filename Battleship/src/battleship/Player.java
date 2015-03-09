@@ -45,13 +45,15 @@ public class Player {
 	public Player (String name) {
 		
 		this.name = name;
+		shipBoard = new ShipBoard(game.size);
+		initShipBoard();
 		
 	}
 	
 	/**
 	 * Loads name
 	 */
-	public void loadName () {
+	public void loadName() {
 		
 		name = game.config.getPlayerName();
 		
@@ -63,6 +65,7 @@ public class Player {
 	public void initShipBoard() {
 		
 		shipBoard = new ShipBoard(game.size);
+		shipBoard.fillBoard();
 		
 	}
 	
@@ -80,9 +83,27 @@ public class Player {
 	
 	/**
 	 * Fires a shot
+	 * @return true if a ship is at coordinates
 	 */
-	public void fire () {
+	public boolean fire() {
 		
+		int[] coords = parseCoordinateString(BattleshipGame.scanner.nextLine().replaceAll("[\\s]", "").split(","));
+		
+		return shipBoard.hit(coords[0], coords[1]);
+		
+	}
+	
+	/**
+	 * @param input string to parse
+	 * @return an int[] with coordinates
+	 */
+	public int[] parseCoordinateString(String[] input) {
+		
+		int[] output = new int[2];
+		output[0] = Integer.parseInt(input[0]);
+		output[1] = Integer.parseInt(input[1]);
+		
+		return output;
 	}
 	
 }

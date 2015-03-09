@@ -58,12 +58,12 @@ public class MultiplicationTable {
 	public static void printBlankLine () {
 		
 		// First part before the +
-		System.out.print("\n\u2014\u2014\u2014\u2014");
+		System.out.print("\n\u2012\u2012\u2012\u2012");
 		System.out.print("+");
 		// Loops through and prints the rest
 		for (int i = 0; i < 89; i++) {
 			
-			System.out.print("\u2014");
+			System.out.print("\u2012");
 			
 		}
 		
