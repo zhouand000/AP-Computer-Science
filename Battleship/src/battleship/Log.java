@@ -4,20 +4,34 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * @author Andrew
+ *
+ */
 public class Log {
 	
-	final public SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+	/**
+	 * Date formatter
+	 */
+	final public SimpleDateFormat sdf = new SimpleDateFormat(
+			"yyyy-MM-dd HH:mm:ss:SSS");
 	
-	final public File log = new File("BattleshipGameLog_" + sdf.format(new Date()));
-		
+	/**
+	 * Actual file
+	 */
+	final public File log = new File("BattleshipGameLog_"
+			+ getTimeString() + ".txt");
+	
 	private BufferedReader br;
 	
 	private BufferedWriter bw;
-		
+	
+	@SuppressWarnings("unused")
 	private Scanner scanner;
 	
-	
-	
+	/**
+	 * Default constructor
+	 */
 	public Log () {
 		
 		init();
@@ -27,17 +41,14 @@ public class Log {
 	/**
 	 * Initializes log
 	 */
-	public void init() {
+	private void init () {
 		
 		try {
 			
 			log.createNewFile();
-			
+			br = new BufferedReader(new FileReader(log));
 			bw = new BufferedWriter(new FileWriter(log, true));
 			scanner = new Scanner(br);
-			
-			
-			
 			
 		}
 		catch (IOException e) {
@@ -48,42 +59,59 @@ public class Log {
 		
 	}
 	
-	
-	
-	public void print(String str) {
+	/**
+	 * Prints a string and sends to log
+	 * 
+	 * @param str
+	 *            The string to print
+	 */
+	public void print (String str) {
 		
 		System.out.print(str);
 		try {
 			bw.write(str);
 		}
 		catch (IOException e) {
-
+			
 			System.err.println("Writing to log failed.");
 			e.printStackTrace();
 		}
 		
+	}
+	
+	/**
+	 * @return the current time, formatted using sdf
+	 */
+	public String getTimeString() {
+		
+		return sdf.format(new Date());
 		
 	}
 	
-	
-	
-	public void write(String str) {
+	/**
+	 * @param str
+	 *            The string to write
+	 */
+	public void write (String str) {
 		
 		try {
 			bw.write(str);
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
 	}
 	
-	public void writeln(String str) {
+	/**
+	 * @param str
+	 *            The string to write
+	 */
+	public void writeln (String str) {
 		
-		write (str + "\n");
+		write(str + "\n");
 		
 	}
 	
-
 }

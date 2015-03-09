@@ -1,7 +1,17 @@
 package battleship;
 
+/**
+ * @author Andrew The direction enum
+ */
 public enum Direction {
 	
-	RIGHT,DOWN;
+	/**
+	 * Right
+	 */
+	RIGHT,
+	/**
+	 * Down
+	 */
+	DOWN;
 	
 }

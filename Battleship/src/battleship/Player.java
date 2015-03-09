@@ -7,13 +7,20 @@ package battleship;
 public class Player {
 	
 	/**
+	 * Reference to game
+	 */
+	public BattleshipGame game = BattleshipGame.getInstance();
+	
+	/**
 	 * The ship board
 	 */
-	public ShipBoard board;
+	public ShipBoard shipBoard;
+	
 	/**
 	 * The hit board
 	 */
 	public HitBoard hitBoard;
+	
 	/**
 	 * The name
 	 */
@@ -28,23 +35,44 @@ public class Player {
 		
 	}
 	
+	
 	/**
 	 * Constructor
 	 * 
-	 * @param name The name
+	 * @param name
+	 *            The name
 	 */
-	public Player(String name) {
+	public Player (String name) {
 		
 		this.name = name;
 		
 	}
 	
 	/**
+	 * Loads name
+	 */
+	public void loadName () {
+		
+		name = game.config.getPlayerName();
+		
+	}
+	
+	/**
+	 * Initializes shipBoard
+	 */
+	public void initShipBoard() {
+		
+		shipBoard = new ShipBoard(game.size);
+		
+	}
+	
+	/**
 	 * Sets the name
 	 * 
-	 * @param name The name
+	 * @param name
+	 *            The name
 	 */
-	public void setName(String name) {
+	public void setName (String name) {
 		
 		this.name = name;
 		
@@ -53,9 +81,7 @@ public class Player {
 	/**
 	 * Fires a shot
 	 */
-	public void fire() {
-		
-		
+	public void fire () {
 		
 	}
 	

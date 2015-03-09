@@ -3,24 +3,29 @@ package battleship;
 /**
  * @author zhouand000
  * 
- * Sector of grid
+ *         Sector of grid
  */
 public class Sector {
 	
 	private boolean hasShip;
+	
 	private Ship ship;
+	
 	/**
 	 * The X coordinate
 	 */
 	public int xCoord;
+	
 	/**
 	 * The y coordinate
 	 */
 	public int yCoord;
+	
 	/**
 	 * The position of the sector along the ship
 	 */
 	public int position;
+	
 	/**
 	 * If the sector has been hit
 	 */
@@ -29,7 +34,7 @@ public class Sector {
 	/**
 	 * Default Constructor
 	 */
-	public Sector() {
+	public Sector () {
 		
 		hasShip = false;
 		setShip(null);
@@ -40,6 +45,10 @@ public class Sector {
 		
 	}
 	
+	/**
+	 * @param xCoord
+	 * @param yCoord
+	 */
 	public Sector (int xCoord, int yCoord) {
 		
 		this.xCoord = xCoord;
@@ -51,10 +60,14 @@ public class Sector {
 	}
 	
 	/**
-	 * @param ship The ship at this location
-	 * @param xCoord The xCoord of the sector
-	 * @param yCoord The yCoord of the Sector
-	 * @param position The position of the ship on the 
+	 * @param ship
+	 *            The ship at this location
+	 * @param xCoord
+	 *            The xCoord of the sector
+	 * @param yCoord
+	 *            The yCoord of the Sector
+	 * @param position
+	 *            The position of the ship on the
 	 */
 	public Sector (Ship ship, int xCoord, int yCoord, int position) {
 		
@@ -69,14 +82,13 @@ public class Sector {
 	/**
 	 * Adds a hit to the ship at the current position
 	 */
-	public void hit() {
+	public void hit () {
 		
-		if (hasShip){
+		if (hasShip) {
 			
 			getShip().hit(position);
 			
 		}
-		
 		
 	}
 	
@@ -86,13 +98,41 @@ public class Sector {
 	public Ship getShip () {
 		return ship;
 	}
-
+	
 	/**
 	 * @param ship
 	 */
 	public void setShip (Ship ship) {
 		
 		this.ship = ship;
+		hasShip = true;
+		
+	}
+	
+	/**
+	 * @return true if the sector has a ship
+	 */
+	public boolean hasShip() {
+		
+		return hasShip;
+		
+	}
+	
+	/**
+	 * @param position the position
+	 */
+	public void setPosition (int position) {
+		
+		this.position = position;
+		
+	}
+	
+	/**
+	 * @return a char representation of the sector
+	 */
+	public char toChar() {
+		
+		return hasHit ? (hasShip ? '*' : '~') : '?';
 		
 	}
 	

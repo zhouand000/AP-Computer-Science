@@ -7,32 +7,38 @@ public enum ShipType {
 	
 	/**
 	 * Carrier
+	 * Size 6
 	 */
-	CARRIER("CARRIER", 5),
+	CARRIER("CARRIER", 6),
 	/**
 	 * Battleship
+	 * Size 5
 	 */
 	BATTLESHIP("Battleship", 5),
 	/**
 	 * Cruiser
+	 * Size 4
 	 */
 	CRUISER("Cruiser", 4),
 	/**
 	 * Destroyer
+	 * Size 3
 	 */
 	DESTROYER("Destroyer", 3),
 	/**
 	 * Frigate
+	 * Size 2
 	 */
 	FRIGATE("Frigate", 2),
 	/**
-	 * Submarine 
+	 * Submarine
+	 * Size 2
 	 */
 	SUBMARINE("Submarine", 2),
 	/**
 	 * Custom
 	 */
-	CUSTOM("Custom",0),
+	CUSTOM("Custom", 0),
 	/**
 	 * Other
 	 */
@@ -55,31 +61,32 @@ public enum ShipType {
 	public int getSize () {
 		return size;
 	}
-
+	
 	/**
 	 * @return the name of the ship class
 	 */
 	public String getName () {
 		return name;
 	}
-
+	
 	/**
-	 * @param name the name
+	 * @param name
+	 *            the name
 	 */
 	public void setName (String name) {
 		this.name = name;
 	}
-
+	
 	/**
-	 * @param size the size
+	 * @param size
+	 *            the size
 	 */
 	public void setSize (int size) {
 		this.size = size;
 	}
-
+	
 	private String name;
 	
 	private int size;
-	
 	
 }

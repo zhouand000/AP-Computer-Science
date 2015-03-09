@@ -12,49 +12,126 @@ import java.util.Scanner;
  */
 public class BattleshipGame {
 	
+	/**
+	 * Size of board
+	 */
 	public int size;
 	
-	public ShipBoard playerShipBoard;
+	/**
+	 * Player
+	 */
+	public Player player;
 	
-	public ShipBoard enemyShipBoard;
+	/**
+	 * ComputerPlayer
+	 */
+	public ComputerPlayer computer;
 	
-	public HitBoard playerHitBoard;
+	/**
+	 * Array of ships
+	 */
+	public ArrayList<Ship> shipArray = new ArrayList<Ship>();
 	
-	public HitBoard computerHitBoard;
+	/**
+	 * Array of ship types
+	 */
+	public ArrayList<ShipType> shipClassArray;
 	
-	public ArrayList<Ship> shipArray;
+	/**
+	 * Scanner
+	 */
+	static public Scanner scanner = new Scanner(System.in);
 	
-	static public Scanner reader = new Scanner(System.in);
+	/**
+	 * RNG
+	 */
+	public Random random;
 	
-	static public Random random = new Random();
-	
+	/**
+	 * Config file
+	 */
 	public Config config;
+	
+	/**
+	 * The log file
+	 */
+	public Log log;
+	
+	static private BattleshipGame game;
+	
+	private BattleshipGame () {
+		
+		// Sets game, the instance returned by getInstance()
+		game = this;
+		
+		// Initializes config and log
+		config = new Config();
+		log = new Log();
+		
+		random = new Random(config.getSeed());
+		
+		shipClassArray = new ArrayList<ShipType>();
+		
+		shipClassArray.add(ShipType.BATTLESHIP);
+		shipClassArray.add(ShipType.CARRIER);
+		shipClassArray.add(ShipType.CRUISER);
+		shipClassArray.add(ShipType.CRUISER);
+		shipClassArray.add(ShipType.DESTROYER);
+		shipClassArray.add(ShipType.DESTROYER);
+		shipClassArray.add(ShipType.FRIGATE);
+		shipClassArray.add(ShipType.FRIGATE);
+		
+		
+	}
 	
 	/**
 	 * @param args
 	 */
 	public static void main (String[] args) {
 		
-		
 		BattleshipGame game = new BattleshipGame();
 		game.init();
-		game.playerShipBoard = new ShipBoard(10);
-		
-		
-		
-	}
-	
-	public void init() {
-		
-		config = new Config();
-		
-		
+		game.run();
 		
 	}
 	
 	/**
-	 * @param x x coord
-	 * @param y y coord
+	 * @return The instance of BattleshipGame
+	 */
+	public static BattleshipGame getInstance () {
+		
+		return game;
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public void run(){
+		
+		boolean win = true;
+		while(!win) {
+			
+			
+			
+		}
+		
+	}
+	
+	/**
+	 * Initializes game
+	 */
+	public void init () {
+		
+		// TODO Finish init()
+		
+	}
+	
+	/**
+	 * @param x
+	 *            x coord
+	 * @param y
+	 *            y coord
 	 * 
 	 * 
 	 * 
@@ -63,34 +140,34 @@ public class BattleshipGame {
 	 * 
 	 * @return true if a ship is hit
 	 */
-	public boolean fire(int x, int y) {
-		
-		
-		
+	public boolean fire (int x, int y) {
 		
 		return false;
-				
+		
 	}
 	
-	
-	public int[] getCoordinates() {
+	/**
+	 * @return coordinates in a int[]
+	 */
+	public int[] getCoordinates () {
 		
 		int[] output = new int[2];
 		
 		System.out.println("Enter coordinates: ");
 		System.out.print(":");
 		
-		
 		return output;
-		
-		
 		
 	}
 	
-	
-	public boolean validateCoordinates(int[] coordinates){
+	/**
+	 * @param coordinates
+	 * @return true if the coordinates are valid
+	 */
+	public boolean validateCoordinates (int[] coordinates) {
 		
-		if (coordinates[0] < size && coordinates[1] < size && coordinates[0] >= 0 && coordinates[1] >= 0) {
+		if (coordinates[0] < size && coordinates[1] < size
+				&& coordinates[0] >= 0 && coordinates[1] >= 0) {
 			return true;
 		}
 		else return false;

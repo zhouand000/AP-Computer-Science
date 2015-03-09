@@ -1,16 +1,20 @@
 package battleship;
 
+/**
+ * @author Andrew Abstract board class
+ */
 public abstract class Board {
 	
+	/**
+	 * Abstract printBoard method
+	 */
+	public abstract void printBoard ();
 	
-	
-	
-	
-	public abstract void printBoard();
-	
-	public abstract String getString();
-	
-	
-	
+	/**
+	 * Returns a string representation of the board
+	 * 
+	 * @return A string representation of the board
+	 */
+	public abstract String getString ();
 	
 }

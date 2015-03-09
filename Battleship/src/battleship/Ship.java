@@ -15,12 +15,22 @@ public class Ship {
 	private boolean isSunk = false;
 	
 	// Initializes fields
+	/**
+	 * The size of the ship
+	 */
 	public final int size;
 	
-	public final String name;
+	/**
+	 * The name of the ship
+	 */
+	public String name;
 	
-	public ShipType type;
+	/**
+	 * The type of the ship
+	 */
+	public final ShipType type;
 	
+	// TODO Unfinished
 	private ArrayList<Sector> locationArray = new ArrayList<Sector>();
 	
 	/**
@@ -45,7 +55,15 @@ public class Ship {
 		this.type = type;
 		
 	}
-	
+	/**
+	 * Adds sector to locationArray
+	 * @param sector the sector to add
+	 */
+	public void addSector(Sector sector) {
+		
+		locationArray.add(sector);
+		
+	}
 	/**
 	 * @param position
 	 *            Position should be between 0 and size, and correspond with the
@@ -95,8 +113,6 @@ public class Ship {
 		
 		System.out.println("You have sunk the " + type.getName() + " " + name
 				+ "!");
-		
-		
 		
 	}
 	

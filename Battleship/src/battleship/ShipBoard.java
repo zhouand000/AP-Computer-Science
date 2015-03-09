@@ -10,9 +10,11 @@ import java.util.Random;
  */
 public class ShipBoard extends Board {
 	
+	BattleshipGame game = BattleshipGame.getInstance();
+	
 	static Random random = new Random(0);
 	
-	Sector[][] grid;
+	private Sector[][] grid;
 	
 	// Creates variables
 	int size;
@@ -21,20 +23,11 @@ public class ShipBoard extends Board {
 		
 		this.size = size;
 		this.grid = new Sector[size][size];
-		
-	}
-	
-	/**
-	 * Fills the board with ships
-	 */
-	public void fillBoard () {
-		
-		for (int i = 0; i < grid.length; i++) {
+		for (int i = 0; i < size; i++) {
 			
-			for (int j = 0; i < grid[i].length; j++) {
+			for (int j = 0; j < size; j++) {
 				
-				// TODO Finish
-				grid[i][j] = null;
+				grid[i][j] = new Sector(i,j);
 				
 			}
 			
@@ -43,39 +36,93 @@ public class ShipBoard extends Board {
 	}
 	
 	/**
-	 * Places ship
+	 * Fills the board with ships
 	 */
-	public void placeShip () {
+	public void fillBoard () {
 		
-		boolean sucess = false;
-		while (!sucess) {
+		for (ShipType type : game.shipClassArray) {
+			
+			game.shipArray.add(placeShip(type));
 			
 		}
 		
 	}
 	
 	/**
-	 * @param type the type of ship to place
+	 * @param type
+	 *            the type of ship to place
+	 * @return a ship with valid coordinates
 	 */
-	public void placeShip (final ShipType type) {
+	public Ship placeShip (final ShipType type) {
 		
 		boolean sucess = false;
-		
+		Ship ship = new Ship(type);
 		
 		while (!sucess) {
 			int shipSize = type.getSize();
 			int xCoord = random.nextInt(size);
 			int yCoord = random.nextInt(size);
-			byte direction = (byte) random.nextInt(2);
-			sucess = checkDirection((direction == 0 ? Direction.DOWN
-					: Direction.RIGHT), shipSize, xCoord, yCoord);
+			Direction direction = (byte) random.nextInt(2) == 0
+					? Direction.DOWN
+					: Direction.RIGHT;
+			sucess = checkDirection(direction, shipSize, xCoord, yCoord);
+			
+			if (sucess) {
+				
+				switch (direction) {
+					case DOWN:
+						
+						for (int i = 0; i < shipSize; i++) {
+							
+							Sector sector = new Sector(xCoord, yCoord + i);
+							sector.setShip(ship);
+							sector.setPosition(i);
+							ship.addSector(sector);
+							
+						}
+					break;
+					case RIGHT:
+						for (int i = 0; i < shipSize; i++) {
+							
+							Sector sector = new Sector(xCoord + i, yCoord);
+							sector.setShip(ship);
+							sector.setPosition(i);
+							ship.addSector(sector);
+							
+						}
+					
+					break;
+				
+				}
+				
+			}
 			
 		}
-		
+		return ship;
 	}
 	
 	/**
-	 * @param direction The direction to check
+	 * @param xCoord
+	 *            xCoord to check
+	 * @param yCoord
+	 *            yCoord to check
+	 * @return true if the coord is valid and empty
+	 */
+	public boolean checkCoord (int xCoord, int yCoord) {
+		
+		// Checks if the conditions are not valid
+		if (xCoord >= size || xCoord < 0 || yCoord >= size || yCoord < 0
+				|| grid[xCoord][yCoord].hasShip()) {
+			
+			return false;
+			
+		}
+		else return true;
+	}
+	
+	/**
+	 * @param direction
+	 *            The direction to check
 	 * @param shipSize
 	 * @param xCoord
 	 * @param yCoord
@@ -84,16 +131,17 @@ public class ShipBoard extends Board {
 	public boolean checkDirection (Direction direction, int shipSize,
 			int xCoord, int yCoord) {
 		
+		boolean result;
+		
 		switch (direction) {
 			case DOWN:
 				
 				for (int i = 0; i < shipSize; i++) {
 					
 					// Checks if the conditions are not valid
-					if (yCoord + i >= size || grid[xCoord][yCoord + i] != null) {
-						
+					result = checkCoord(xCoord, yCoord + i);
+					if (result == false) {
 						return false;
-						
 					}
 					
 				}
@@ -102,12 +150,10 @@ public class ShipBoard extends Board {
 				for (int i = 0; i < shipSize; i++) {
 					
 					// Checks if the conditions are not valid
-					if (xCoord + i >= size || grid[xCoord + i][yCoord] != null) {
-						
+					result = checkCoord(xCoord + i, yCoord);
+					if (result == false) {
 						return false;
-						
 					}
-					
 				}
 			
 			break;
@@ -122,13 +168,25 @@ public class ShipBoard extends Board {
 		
 		System.out.println(getString());
 		
-		
 	}
 	
 	@Override
 	public String getString () {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String output;
+		
+		for (int i = 0; i < size; i++) {
+			
+			for (int j = 0; j < size; j++) {
+				
+				
+				// TODO FINISH
+				
+			}
+			
+		}
+		
+		return output;
 	}
 	
 }
