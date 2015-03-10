@@ -7,7 +7,7 @@ package battleship;
  */
 public class Sector {
 	
-	private boolean hasShip;
+	private boolean hasShip = false;
 	
 	private Ship ship;
 	
@@ -37,7 +37,6 @@ public class Sector {
 	public Sector () {
 		
 		hasShip = false;
-		setShip(null);
 		xCoord = -1;
 		yCoord = -1;
 		position = -1;
@@ -53,7 +52,6 @@ public class Sector {
 		
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
-		setShip(null);
 		position = -1;
 		hasHit = false;
 		
@@ -72,7 +70,6 @@ public class Sector {
 	public Sector (Ship ship, int xCoord, int yCoord, int position) {
 		
 		hasShip = true;
-		this.setShip(ship);
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
 		this.position = position;
@@ -81,6 +78,7 @@ public class Sector {
 	
 	/**
 	 * Adds a hit to the ship at the current position
+	 * 
 	 * @return true if the ship was hit
 	 */
 	public boolean hit () {
@@ -101,27 +99,31 @@ public class Sector {
 		return ship;
 	}
 	
+	
+	 
 	/**
-	 * @param ship
+	 * @param ship 
+	 * @param position Position along ship
 	 */
-	public void setShip (Ship ship) {
+	public void setShip (Ship ship, int position) {
 		
 		this.ship = ship;
 		hasShip = true;
-		
+		this.position = position;
 	}
 	
 	/**
 	 * @return true if the sector has a ship
 	 */
-	public boolean hasShip() {
+	public boolean hasShip () {
 		
 		return hasShip;
 		
 	}
 	
 	/**
-	 * @param position the position
+	 * @param position
+	 *            the position
 	 */
 	public void setPosition (int position) {
 		
@@ -132,7 +134,7 @@ public class Sector {
 	/**
 	 * @return a char representation of the sector
 	 */
-	public char toChar() {
+	public char toChar () {
 		
 		return hasHit ? (hasShip ? '*' : '~') : '?';
 		

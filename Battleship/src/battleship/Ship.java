@@ -31,7 +31,10 @@ public class Ship {
 	public final ShipType type;
 	
 	// TODO Unfinished
-	private ArrayList<Sector> locationArray = new ArrayList<Sector>();
+	/**
+	 * ArrayList of locations
+	 */
+	public ArrayList<Sector> locationArray = new ArrayList<Sector>();
 	
 	/**
 	 * @param type
@@ -55,15 +58,19 @@ public class Ship {
 		this.type = type;
 		
 	}
+	
 	/**
 	 * Adds sector to locationArray
-	 * @param sector the sector to add
+	 * 
+	 * @param sector
+	 *            the sector to add
 	 */
-	public void addSector(Sector sector) {
+	public void addSector (Sector sector) {
 		
 		locationArray.add(sector);
 		
 	}
+	
 	/**
 	 * @param position
 	 *            Position should be between 0 and size, and correspond with the
@@ -88,6 +95,7 @@ public class Ship {
 	
 	/**
 	 * Checks if the ship is sunk;
+	 * 
 	 * @return If the ship is sunk, return true.
 	 */
 	public boolean isSunk () {

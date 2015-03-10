@@ -34,15 +34,6 @@ public class Log {
 	 */
 	public Log () {
 		
-		init();
-		
-	}
-	
-	/**
-	 * Initializes log
-	 */
-	private void init () {
-		
 		try {
 			
 			log.createNewFile();
@@ -56,7 +47,7 @@ public class Log {
 			System.err.println("Log could not be created.\n\n");
 			e.printStackTrace();
 		}
-		
+		System.err.println("DEBUG: Finished Log constructor");
 	}
 	
 	/**
@@ -82,7 +73,7 @@ public class Log {
 	/**
 	 * @return the current time, formatted using sdf
 	 */
-	public String getTimeString() {
+	public String getTimeString () {
 		
 		return sdf.format(new Date());
 		

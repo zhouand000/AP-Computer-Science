@@ -35,7 +35,6 @@ public class Player {
 		
 	}
 	
-	
 	/**
 	 * Constructor
 	 * 
@@ -44,8 +43,14 @@ public class Player {
 	 */
 	public Player (String name) {
 		
+		System.err.println("DEBUG: Started player constructor");
 		this.name = name;
+		System.err.println("DEBUG: About to create shipBoard");
 		shipBoard = new ShipBoard(game.size);
+		System.err.println("DEBUG: Finished creating shipBoard");
+		
+		// TODO Is this even necessary?
+		
 		initShipBoard();
 		
 	}
@@ -53,7 +58,7 @@ public class Player {
 	/**
 	 * Loads name
 	 */
-	public void loadName() {
+	public void loadName () {
 		
 		name = game.config.getPlayerName();
 		
@@ -62,10 +67,15 @@ public class Player {
 	/**
 	 * Initializes shipBoard
 	 */
-	public void initShipBoard() {
+	public void initShipBoard () {
 		
-		shipBoard = new ShipBoard(game.size);
-		shipBoard.fillBoard();
+		System.err.println("DEBUG: in initShipBoard()");
+		// shipBoard = new ShipBoard(game.size);
+		
+		// TODO The exception is here
+		// shipBoard.fillBoard();
+		
+		System.err.println("DEBUG: exiting initShipBoard()");
 		
 	}
 	
@@ -83,26 +93,40 @@ public class Player {
 	
 	/**
 	 * Fires a shot
+	 * 
 	 * @return true if a ship is at coordinates
 	 */
-	public boolean fire() {
+	public boolean fire () {
 		
-		int[] coords = parseCoordinateString(BattleshipGame.scanner.nextLine().replaceAll("[\\s]", "").split(","));
+		System.err.println("DEBUG: Player.fire(): Entered fire()");
+		System.out.print("Enter a coordinate:\n:");
+		int[] coords = getCoordinates();
+		System.out.println();
 		
 		return shipBoard.hit(coords[0], coords[1]);
 		
 	}
 	
 	/**
-	 * @param input string to parse
+	 * 
 	 * @return an int[] with coordinates
 	 */
-	public int[] parseCoordinateString(String[] input) {
+	public int[] getCoordinates () {
 		
-		int[] output = new int[2];
-		output[0] = Integer.parseInt(input[0]);
-		output[1] = Integer.parseInt(input[1]);
-		
+		System.err.println("DEBUG: Player.getCoordinates(): In getCoordinates()");
+		String[] input;
+		int[] output;
+		//do {
+			System.err.println("DEBUG: Player.getCoordinates(): In do loop");
+			input = BattleshipGame.scanner.nextLine()
+					.replaceAll("[\\s\\(\\)]", "")
+					.split(",");
+			output = new int[2];
+			System.err.println("DEBUG: Player.getCoordinates(): About to parse ints");
+			output[0] = Integer.parseInt(input[0]);
+			output[1] = Integer.parseInt(input[1]);
+			System.err.println("DEBUG: Player.getCoordinates(): finished parsing");
+		//}while (false);
 		return output;
 	}
 	

@@ -70,21 +70,27 @@ public class BattleshipGame {
 		
 		this.size = 10;
 		
+		System.err.println("DEBUG: About to create RNG");
 		random = new Random(config.getSeed());
+		System.err.println("DEBUG: Finished creating RNG");
 		
 		shipClassArray = new ArrayList<ShipType>();
 		
 		shipClassArray.add(ShipType.BATTLESHIP);
 		shipClassArray.add(ShipType.CARRIER);
 		shipClassArray.add(ShipType.CRUISER);
-		shipClassArray.add(ShipType.CRUISER);
 		shipClassArray.add(ShipType.DESTROYER);
-		shipClassArray.add(ShipType.DESTROYER);
-		shipClassArray.add(ShipType.FRIGATE);
 		shipClassArray.add(ShipType.FRIGATE);
 		
+		System.err.println("DEBUG: Finished creating shipClassArray");
+		
+		// TODO DEBUG, the error is here
 		player = new Player(config.getPlayerName());
+		System.err.println("DEBUG: Finished creating player");
+		
 		computer = new ComputerPlayer();
+		
+		System.err.println("DEBUG: Finished creating ComputerPlayer");
 		
 	}
 	
@@ -94,9 +100,8 @@ public class BattleshipGame {
 	public static void main (String[] args) {
 		
 		BattleshipGame game = new BattleshipGame();
-		game.init();
+		System.err.println("DEBUG: Finished BG Constructor");
 		game.run();
-											
 		
 	}
 	
@@ -112,29 +117,20 @@ public class BattleshipGame {
 	/**
 	 * 
 	 */
-	public void run(){
-		
+	public void run () {
+		System.err.println("DEBUG: In run()");
 		int hitCount = 0;
 		boolean win = false;
-		while(!win) {
+		while (!win) {
 			
 			computer.shipBoard.printBoard();
 			if (player.fire()) {
-				
+				System.err.println("DEBUG: BattleshipGame.run(): fire() returned true");
 				hitCount++;
 				
 			}
 			
 		}
-		
-	}
-	
-	/**
-	 * Initializes game
-	 */
-	public void init () {
-		
-		// TODO Finish init()
 		
 	}
 	
