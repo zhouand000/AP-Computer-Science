@@ -1,7 +1,9 @@
 package battleship;
 
 /**
- * @author Andrew The direction enum
+ * The direction enum
+ * 
+ * @author Andrew
  */
 public enum Direction {
 	

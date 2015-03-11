@@ -1,7 +1,7 @@
 package battleship;
 
 import java.io.*;
-import java.util.Random;
+//import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class Config {
 	
-	final File configFile = new File("BattleshipGameConfig.txt");
+	static final File configFile = new File("BattleshipGameConfig.txt");
 	
 	private boolean isNewConfig;
 	
@@ -30,14 +30,15 @@ public class Config {
 	public long seed;
 	
 	/**
-	 * Regex expression that matches the config file line that gives the playerName
+	 * Regex expression that matches the config file line that gives the
+	 * playerName
 	 */
-	public static final String PLAYER_NAME_REGEX = "(playerName)\\p{Blank}+=\\p{Blank}+\\p{Alnum}+\\n";
+	public static final String PLAYER_NAME_REGEX = "playerName[ ]*=[ ]*\\w+";
 	
 	/**
 	 * Regex expression that matches the config file line that gives the seed
 	 */
-	public static final String SEED_REGEX = "(seed)\\p{Blank}+=\\p{Blank}+\\p{Digit}+\\n";
+	public static final String SEED_REGEX = "seed[ ]*=[ ]*\\d+";
 	
 	/**
 	 * Constructor for configuration file
@@ -47,11 +48,10 @@ public class Config {
 		try {
 			
 			if (!configFile.exists()) {
-				System.err
-				.println("DEBUG: Config.Config(): Config file doesn't exist, creating new file");
+				// System.err.println("DEBUG: Config.Config(): Config file doesn't exist, creating new file");
 				configFile.createNewFile();
 				isNewConfig = true;
-				System.err.println("DEBUG: Creating new config file");
+				// System.err.println("DEBUG:Creating new config file");
 				
 			}
 			
@@ -60,16 +60,14 @@ public class Config {
 			bw = new BufferedWriter(new FileWriter(configFile, true));
 			loadConfig();
 			
-			
-			
 			if (!fileScanner.hasNext(PLAYER_NAME_REGEX)) {
 				
-				writeln("playerName = " + getPlayerName());
+				writeln("playerName = " + playerName);
 				
 			}
 			if (!fileScanner.hasNext(SEED_REGEX)) {
 				
-				writeln("seed = " + getSeed());
+				writeln("seed = " + seed);
 				
 			}
 			bw.flush();
@@ -82,7 +80,7 @@ public class Config {
 		}
 		writeConfig();
 		isNewConfig = false;
-		System.err.println("DEBUG: Finished config constructor");
+		// System.err.println("DEBUG:Finished config constructor");
 		
 	}
 	
@@ -95,6 +93,7 @@ public class Config {
 	private void writeln (String s) throws IOException {
 		
 		bw.write(s + "\n");
+		bw.flush();
 		
 	}
 	
@@ -113,7 +112,7 @@ public class Config {
 			while (playerName.replaceAll("[\\s]", "") == ""
 					|| playerName.matches("[\\s]"));
 			
-			System.err.println("DEBUG: exited validation loop");
+			// System.err.println("DEBUG:exited validation loop");
 			
 			writeConfig();
 			
@@ -130,8 +129,9 @@ public class Config {
 		
 		if (isNewConfig) {
 			
-			seed = new Random(0).nextLong();
-			
+			// Seed = new Random(0).nextLong();
+			seed = System.currentTimeMillis();
+			writeConfig();
 		}
 		
 		return seed;
@@ -177,7 +177,7 @@ public class Config {
 	 * Writes the current values to config
 	 */
 	public void writeConfig () {
-		System.err.println("DEBUG: Config.writeConfig(): In writeConfig()");
+		// System.err.println("DEBUG:Config.writeConfig(): In writeConfig()");
 		if (configFile.exists()) {
 			configFile.delete();
 		}

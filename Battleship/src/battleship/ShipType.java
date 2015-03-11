@@ -6,9 +6,9 @@ package battleship;
 public enum ShipType {
 	
 	/**
-	 * Carrier Size 6
+	 * Carrier Size 5
 	 */
-	CARRIER("CARRIER", 6),
+	CARRIER("CARRIER", 5),
 	/**
 	 * Battleship Size 5
 	 */
@@ -29,6 +29,15 @@ public enum ShipType {
 	 * Submarine Size 2
 	 */
 	SUBMARINE("Submarine", 2),
+	/**
+	 * Drone Size 1
+	 */
+	DRONE("Drone", 1),
+	
+	/**
+	 * Debug Size 1
+	 */
+	DEBUG("Debug", 1),
 	/**
 	 * Custom
 	 */

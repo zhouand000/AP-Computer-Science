@@ -1,6 +1,7 @@
 package battleship;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -57,7 +58,47 @@ public class BattleshipGame {
 	 */
 	public Log log;
 	
+	public boolean isCheatModeOn;
+	
 	static private BattleshipGame game;
+	
+	private BattleshipGame (boolean isCheatModeOn) {
+		
+		this.isCheatModeOn = isCheatModeOn;
+		
+		// Sets game, the instance returned by getInstance()
+		game = this;
+		
+		// Initializes config and log
+		config = new Config();
+		log = new Log();
+		
+		this.size = 1;
+		
+		// System.err.println("DEBUG:About to create RNG");
+		random = new Random(config.getSeed());
+		// System.err.println("DEBUG:Finished creating RNG");
+		
+		shipClassArray = new ArrayList<ShipType>();
+		
+		shipClassArray.add(ShipType.DEBUG);
+		
+		// System.err.println("DEBUG:Finished creating shipClassArray");
+		
+		player = new Player(config.getPlayerName());
+		// System.err.println("DEBUG:Finished creating player");
+		
+		computer = new ComputerPlayer();
+		if (isCheatModeOn) {
+			
+			System.out.println("The debug ship is at: "
+					+ shipArray.get(0).locationArray.get(0).getCoordinateString());
+		}
+		// System.err.println("DEBUG:Finished creating ComputerPlayer");
+		
+		log.writeHeader();
+		
+	}
 	
 	private BattleshipGame () {
 		
@@ -70,9 +111,9 @@ public class BattleshipGame {
 		
 		this.size = 10;
 		
-		System.err.println("DEBUG: About to create RNG");
+		// System.err.println("DEBUG:About to create RNG");
 		random = new Random(config.getSeed());
-		System.err.println("DEBUG: Finished creating RNG");
+		// System.err.println("DEBUG:Finished creating RNG");
 		
 		shipClassArray = new ArrayList<ShipType>();
 		
@@ -82,15 +123,16 @@ public class BattleshipGame {
 		shipClassArray.add(ShipType.DESTROYER);
 		shipClassArray.add(ShipType.FRIGATE);
 		
-		System.err.println("DEBUG: Finished creating shipClassArray");
+		// System.err.println("DEBUG:Finished creating shipClassArray");
 		
-		// TODO DEBUG, the error is here
 		player = new Player(config.getPlayerName());
-		System.err.println("DEBUG: Finished creating player");
+		// System.err.println("DEBUG:Finished creating player");
 		
 		computer = new ComputerPlayer();
 		
-		System.err.println("DEBUG: Finished creating ComputerPlayer");
+		// System.err.println("DEBUG:Finished creating ComputerPlayer");
+		
+		log.writeHeader();
 		
 	}
 	
@@ -99,8 +141,34 @@ public class BattleshipGame {
 	 */
 	public static void main (String[] args) {
 		
-		BattleshipGame game = new BattleshipGame();
-		System.err.println("DEBUG: Finished BG Constructor");
+		System.out.println("Starting Battleship Simulator…");
+		boolean cheatModeOn = false;
+		// int mode = 0;
+		
+		if (args.length > 0) {
+			
+			cheatModeOn = Arrays.binarySearch(args, "--c") != -1;
+			boolean reset = Arrays.binarySearch(args, "--r") != -1;
+			if (cheatModeOn) {
+				
+				System.out.println("Activating cheat mode");
+				
+			}
+			if (reset) {
+				
+				System.out.println("Resetting config");
+				if (Config.configFile.exists()) {
+					Config.configFile.delete();
+				}
+			}
+			
+		}
+		BattleshipGame game;
+		if (cheatModeOn) {
+			game = new BattleshipGame(true);
+		}
+		else game = new BattleshipGame();
+		// System.err.println("DEBUG:Finished BG Constructor");
 		game.run();
 		
 	}
@@ -118,66 +186,40 @@ public class BattleshipGame {
 	 * 
 	 */
 	public void run () {
-		System.err.println("DEBUG: In run()");
+		
+		int totalOccupiedSectors = 0;
+		for (ShipType type : shipClassArray) {
+			
+			totalOccupiedSectors += type.getSize();
+			
+		}
+		// System.err.println("DEBUG:In run()");
 		int hitCount = 0;
+		int shotCount = 0;
 		boolean win = false;
 		while (!win) {
 			
-			computer.shipBoard.printBoard();
+			String output = computer.shipBoard.getString();
+			System.out.println("\n" + output);
 			if (player.fire()) {
-				System.err.println("DEBUG: BattleshipGame.run(): fire() returned true");
+				// System.err.println("DEBUG: BattleshipGame.run(): fire() returned true");
 				hitCount++;
+				
+			}
+			shotCount++;
+			if (totalOccupiedSectors == hitCount) {
+				
+				win = true;
 				
 			}
 			
 		}
 		
+		// Code to run on win
+		System.out.println("You have sunk all enemy ships.");
+		System.out.println("You used " + shotCount + " shots.");
+		System.out.println("Your accuracy is " + (float) totalOccupiedSectors
+				/ shotCount * 100 + "%.");
 	}
 	
-	/**
-	 * @param x
-	 *            x coord
-	 * @param y
-	 *            y coord
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * @return true if a ship is hit
-	 */
-	public boolean fire (int x, int y) {
-		
-		return false;
-		
-	}
-	
-	/**
-	 * @return coordinates in a int[]
-	 */
-	public int[] getCoordinates () {
-		
-		int[] output = new int[2];
-		
-		System.out.println("Enter coordinates: ");
-		System.out.print(":");
-		
-		return output;
-		
-	}
-	
-	/**
-	 * @param coordinates
-	 * @return true if the coordinates are valid
-	 */
-	public boolean validateCoordinates (int[] coordinates) {
-		
-		if (coordinates[0] < size && coordinates[1] < size
-				&& coordinates[0] >= 0 && coordinates[1] >= 0) {
-			return true;
-		}
-		else return false;
-		
-	}
 }

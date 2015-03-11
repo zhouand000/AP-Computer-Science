@@ -31,11 +31,11 @@ public class ShipBoard extends Board {
 	 */
 	public ShipBoard (int size) {
 		
-		System.err.println("DEBUG: Started ShipBoard constructor");
+		// System.err.println("DEBUG:Started ShipBoard constructor");
 		
 		this.size = size;
 		this.grid = new Sector[size][size];
-		System.err.println("DEBUG: About to loop and fill grid");
+		// System.err.println("DEBUG:About to loop and fill grid");
 		for (int i = 0; i < size; i++) {
 			
 			for (int j = 0; j < size; j++) {
@@ -45,31 +45,28 @@ public class ShipBoard extends Board {
 			}
 			
 		}
-		System.err.println("DEBUG: Done with ShipBoard constructor");
+		// System.err.println("DEBUG:Done with ShipBoard constructor");
 	}
-	
 	
 	/**
 	 * Fills the board with ships
 	 */
 	/*
-	public void fillBoard () {
-		
-		System.err.println("DEBUG: Entered fillBoard()");
-		for (ShipType type : game.shipClassArray) {
-			
-
-			System.err.println("DEBUG: ShipBoard.fillBoard(): Placing " + type
-					+ " class ship");
-			game.shipArray.add(placeShip(type));
-			System.err
-					.println("DEBUG: ShipBoard.fillBoard(): placed a ship in the array, and in the grid");
-			 
-		}
-		
-	}
-	*/
-	
+	 * public void fillBoard () {
+	 * 
+	 * // System.err.println("DEBUG:Entered fillBoard()"); for (ShipType type :
+	 * game.shipClassArray) {
+	 * 
+	 * 
+	 * // System.err.println("DEBUG:ShipBoard.fillBoard(): Placing " + type +
+	 * " class ship"); game.shipArray.add(placeShip(type)); System.err .println(
+	 * "DEBUG: ShipBoard.fillBoard(): placed a ship in the array, and in the grid"
+	 * );
+	 * 
+	 * }
+	 * 
+	 * }
+	 */
 	
 	/**
 	 * @param xCoord
@@ -124,6 +121,13 @@ public class ShipBoard extends Board {
 		}
 		
 		return output;
+	}
+	
+	@Override
+	public void logBoard () {
+		
+		game.log.writeln(getString());
+		
 	}
 	
 }

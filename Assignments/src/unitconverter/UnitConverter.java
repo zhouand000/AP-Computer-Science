@@ -52,7 +52,7 @@ public class UnitConverter {
 				case "exit":
 					System.exit(0);
 					unitType = null;
-				break;
+					break;
 				case "length":
 				case "l":
 				case "distance":
@@ -64,7 +64,7 @@ public class UnitConverter {
 						unit = readLengthUnit();
 					}
 					while (unit == Unit.INVALID);
-				break;
+					break;
 				case "weight":
 				case "w":
 				case "mass":
@@ -75,7 +75,7 @@ public class UnitConverter {
 						unit = readMassUnit();
 					}
 					while (unit == Unit.INVALID);
-				break;
+					break;
 				case "power":
 				case "p":
 					unitType = UnitType.POWER;
@@ -84,10 +84,10 @@ public class UnitConverter {
 						unit = readPowerUnit();
 					}
 					while (unit == Unit.INVALID);
-				break;
+					break;
 				default:
 					unitType = UnitType.INVALID;
-				break;
+					break;
 			
 			}
 			
@@ -182,50 +182,50 @@ public class UnitConverter {
 			case "feet":
 			case "ft":
 				output = "ft";
-			break;
+				break;
 			case "mile":
 			case "miles":
 			case "mi":
 				output = "mi";
-			break;
+				break;
 			case "pound":
 			case "pounds":
 			case "lb":
 			case "lbs":
 				output = "lb";
-			break;
+				break;
 			case "ounce":
 			case "ounces":
 			case "oz":
 				output = "oz";
-			break;
+				break;
 			case "kilometer":
 			case "kilometers":
 			case "km":
 				output = "km";
-			break;
+				break;
 			case "inch":
 			case "inches":
 			case "in":
 				output = "in";
-			break;
+				break;
 			case "centimeter":
 			case "centimetre":
 			case "centimeters":
 			case "centimetres":
 			case "cm":
 				output = "cm";
-			break;
+				break;
 			case "kwh":
 				output = "kwh";
-			break;
+				break;
 			case "horsepower":
 			case "hp":
 				output = "hp";
-			break;
+				break;
 			default:
 				output = "invalid";
-			break;
+				break;
 		}
 		return output;
 	}
@@ -242,40 +242,40 @@ public class UnitConverter {
 					case FT:
 						System.out.println(amount + " " + Unit.FT + " = "
 								+ amount * 5280d + " " + Unit.MI);
-					break;
+						break;
 					case MI:
 						System.out.println(amount + " " + Unit.MI + " = "
 								+ amount * 5280d + " " + Unit.MI);
 						System.out.println(amount + " " + Unit.MI + " = "
 								+ amount * 0.62137119d + " " + Unit.KM);
-					break;
+						break;
 					case KM:
 						System.out.println(amount + " " + Unit.KM + " = "
 								+ amount / 0.62137119d + " " + Unit.MI);
-					break;
+						break;
 					case IN:
 						System.out.println(amount + " " + Unit.IN + " = "
 								+ amount * 2.54d + " " + Unit.CM);
-					break;
+						break;
 					case CM:
 						System.out.println(amount + " " + Unit.CM + " = "
 								+ amount / 2.54d + " " + Unit.IN);
-					break;
+						break;
 					default:
 						throw new IllegalArgumentException("Unit invalid");
 				}
-			break;
+				break;
 			case MASS:
 				switch (unit) {
 				
 					case LB:
 						System.out.println(amount + " " + Unit.LB + " = "
 								+ amount / 16 + " " + Unit.OZ);
-					break;
+						break;
 					case OZ:
 						System.out.println(amount + " " + Unit.OZ + " = "
 								+ amount * 16 + " " + Unit.LB);
-					break;
+						break;
 					default:
 						throw new IllegalArgumentException("Unit invalid");
 				}
@@ -285,18 +285,18 @@ public class UnitConverter {
 					case KWH:
 						System.out.println(amount + " " + Unit.KWH + " = "
 								+ amount * 1.341003d + " " + Unit.HP);
-					break;
+						break;
 					case HP:
 						System.out.println(amount + " " + Unit.HP + " = "
 								+ amount / 1.341003d + " " + Unit.KWH);
-					break;
+						break;
 					default:
 						throw new IllegalArgumentException("Unit invalid");
 						
 				}
-			break;
+				break;
 			default:
-			break;
+				break;
 		
 		}
 		

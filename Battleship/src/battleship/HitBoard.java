@@ -19,14 +19,18 @@ public class HitBoard extends Board {
 	
 	@Override
 	public void printBoard () {
-		// TODO Auto-generated method stub
 		
 	}
 	
 	@Override
 	public String getString () {
-		// TODO Auto-generated method stub
+		
 		return null;
+	}
+	
+	@Override
+	public void logBoard () {
+		
 	}
 	
 }

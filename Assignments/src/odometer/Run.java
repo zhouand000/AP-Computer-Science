@@ -2,7 +2,6 @@ package odometer;
 
 import java.util.Scanner;
 
-
 /**
  * This is the launcher class
  * 
@@ -27,13 +26,11 @@ public class Run {
 		 */
 		Run r = new Run();
 		
-		while (r.mainMenu()){
+		while (r.mainMenu()) {
 			System.out.println("Press the enter key to continue...");
 			reader.nextLine();
 			reader.nextLine();
-			}
-		
-		
+		}
 		
 	}
 	
@@ -58,20 +55,20 @@ public class Run {
 		System.out.println();
 	}
 	
-
 	/**
-	 * Main menu method. Designed to exist inside a while loop, and will always return true unless the exit command is entered.
+	 * Main menu method. Designed to exist inside a while loop, and will always
+	 * return true unless the exit command is entered.
 	 * 
 	 * @return true if the method should run again.
 	 */
-	public boolean mainMenu() {
+	public boolean mainMenu () {
 		
 		printMainMenu();
 		// Gets option
 		System.out.print(":");
 		int mode = reader.nextInt();
 		switch (mode) {
-			
+		
 			case 1:
 				addMiles();
 				return true;
@@ -121,7 +118,7 @@ public class Run {
 		resetFuel();
 		
 	}
-
+	
 	/**
 	 * Resets fuel usage
 	 */
@@ -131,7 +128,7 @@ public class Run {
 		odometer.resetFuel();
 		
 	}
-
+	
 	/**
 	 * Resets mileage
 	 */
@@ -143,7 +140,7 @@ public class Run {
 	}
 	
 	/**
-	 * Gets the mileage, fuel, and efficiency 
+	 * Gets the mileage, fuel, and efficiency
 	 */
 	public void getAll () {
 		
@@ -152,7 +149,7 @@ public class Run {
 		getEfficiency();
 		
 	}
-
+	
 	/**
 	 * Gets fuel efficiency
 	 */
@@ -160,19 +157,20 @@ public class Run {
 		
 		getMileage();
 		getFuel();
-		System.out.println(odometer.getFuel() != 0 ? "The efficiency is: " + odometer.getEfficiency() : "Please set the fuel usage first!");
+		System.out.println(odometer.getFuel() != 0 ? "The efficiency is: "
+				+ odometer.getEfficiency() : "Please set the fuel usage first!");
 		
 	}
-
+	
 	/**
 	 * Gets the fuel usage
 	 */
 	public void getFuel () {
-
+		
 		System.out.println("The fuel usage is: " + odometer.getMileage());
 		
 	}
-
+	
 	/**
 	 * Gets the mileage
 	 */
@@ -186,12 +184,12 @@ public class Run {
 	 * Adds mileage and fuel usage
 	 */
 	public void addTrip () {
-
+		
 		addMiles();
 		addFuel();
 		
 	}
-
+	
 	/**
 	 * Adds fuel usage
 	 */

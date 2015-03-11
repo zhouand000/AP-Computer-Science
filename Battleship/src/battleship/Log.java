@@ -1,7 +1,6 @@
 package battleship;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -10,17 +9,13 @@ import java.util.*;
  */
 public class Log {
 	
-	/**
-	 * Date formatter
-	 */
-	final public SimpleDateFormat sdf = new SimpleDateFormat(
-			"yyyy-MM-dd HH:mm:ss:SSS");
+	private Date creationTime = new Date();
 	
 	/**
 	 * Actual file
 	 */
 	final public File log = new File("BattleshipGameLog_"
-			+ getTimeString() + ".txt");
+			+ Util.formatTime(creationTime) + ".txt");
 	
 	private BufferedReader br;
 	
@@ -28,6 +23,11 @@ public class Log {
 	
 	@SuppressWarnings("unused")
 	private Scanner scanner;
+	
+	/**
+	 * 
+	 */
+	public BattleshipGame game = BattleshipGame.getInstance();
 	
 	/**
 	 * Default constructor
@@ -47,7 +47,7 @@ public class Log {
 			System.err.println("Log could not be created.\n\n");
 			e.printStackTrace();
 		}
-		System.err.println("DEBUG: Finished Log constructor");
+		// System.err.println("DEBUG:Finished Log constructor");
 	}
 	
 	/**
@@ -71,11 +71,21 @@ public class Log {
 	}
 	
 	/**
-	 * @return the current time, formatted using sdf
+	 * Creates the log file's header
 	 */
-	public String getTimeString () {
+	public void writeHeader () {
 		
-		return sdf.format(new Date());
+		writeln(Util.formatTime(creationTime));
+		writeln("Player name: " + game.player.name);
+		writeln("Seed: " + game.config.seed);
+		writeln("Board size: " + game.size);
+		if (game.isCheatModeOn) {
+			
+			writeln("Cheat mode is enabled");
+			
+		}
+		write("\n");
+		write("\n");
 		
 	}
 	
@@ -87,6 +97,7 @@ public class Log {
 		
 		try {
 			bw.write(str);
+			bw.flush();
 		}
 		catch (IOException e) {
 			
@@ -96,6 +107,8 @@ public class Log {
 	}
 	
 	/**
+	 * Writes str and appends a newline
+	 * 
 	 * @param str
 	 *            The string to write
 	 */
@@ -103,6 +116,14 @@ public class Log {
 		
 		write(str + "\n");
 		
+	}
+	
+	/**
+	 * Writes a newline
+	 */
+	public void writeln () {
+		
+		write("\n");
 	}
 	
 }

@@ -37,7 +37,6 @@ public class FractionCalculator {
 		System.out.println("f = " + f);
 		System.out.println("f = " + f.toDouble());
 		
-		
 	}
 	
 	/**

@@ -50,6 +50,7 @@ public class Sector {
 	 */
 	public Sector (int xCoord, int yCoord) {
 		
+		hasShip = false;
 		this.xCoord = xCoord;
 		this.yCoord = yCoord;
 		position = -1;
@@ -83,6 +84,8 @@ public class Sector {
 	 */
 	public boolean hit () {
 		
+		hasHit = true;
+		
 		if (hasShip) {
 			
 			return getShip().hit(position);
@@ -99,11 +102,10 @@ public class Sector {
 		return ship;
 	}
 	
-	
-	 
 	/**
-	 * @param ship 
-	 * @param position Position along ship
+	 * @param ship
+	 * @param position
+	 *            Position along ship
 	 */
 	public void setShip (Ship ship, int position) {
 		
@@ -137,6 +139,15 @@ public class Sector {
 	public char toChar () {
 		
 		return hasHit ? (hasShip ? '*' : '~') : '?';
+		
+	}
+	
+	/**
+	 * @return A string representation of the coordinates
+	 */
+	public String getCoordinateString () {
+		
+		return "(" + xCoord + "," + yCoord + ")";
 		
 	}
 	

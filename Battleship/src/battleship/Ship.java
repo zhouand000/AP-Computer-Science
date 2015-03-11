@@ -10,7 +10,7 @@ public class Ship {
 	
 	private boolean[] hasDamage;
 	
-	private Short[] hits;
+	//private Short[] hits;
 	
 	private boolean isSunk = false;
 	
@@ -46,7 +46,7 @@ public class Ship {
 		this.size = type.getSize();
 		
 		// Initializes the hit array
-		this.hits = new Short[size];
+		//this.hits = new Short[size];
 		
 		// Initializes the hasDamage array
 		this.hasDamage = new boolean[size];
@@ -82,7 +82,7 @@ public class Ship {
 	 */
 	public boolean hit (int position) {
 		
-		this.hits[position]++;
+		//this.hits[position]++;// TODO Null pointer here!!!! FIX!!!
 		this.hasDamage[position] = true;
 		if (isSunk()) {
 			
