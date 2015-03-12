@@ -52,6 +52,7 @@ public class Ship {
 		this.hasDamage = new boolean[size];
 		
 		// Sets name
+		// TODO Names
 		this.name = type.getName();
 		
 		// Sets type

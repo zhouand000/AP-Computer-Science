@@ -77,8 +77,8 @@ public class ShipBoard extends Board {
 	 */
 	public boolean hit (int xCoord, int yCoord) {
 		
-		grid[xCoord][yCoord].hit();
-		return true;
+		
+		return grid[xCoord][yCoord].hit();
 		
 	}
 	

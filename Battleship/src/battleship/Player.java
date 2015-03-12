@@ -95,7 +95,7 @@ public class Player {
 	public boolean fire () {
 		
 		// System.err.println("DEBUG:Player.fire(): Entered fire()");
-		System.out.print("Enter a coordinate:\n:");
+		System.out.println("Enter a coordinate:");
 		int[] coords = getCoordinates();
 		System.out.println();
 		
@@ -116,6 +116,7 @@ public class Player {
 		
 		do {
 			// System.err.println("DEBUG:Player.getCoordinates(): In do loop");
+			System.out.print(":");
 			input = BattleshipGame.scanner.nextLine()
 					.replaceAll("[\\s\\(\\)]", "")
 					.split(",");

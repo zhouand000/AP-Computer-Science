@@ -204,7 +204,11 @@ public class BattleshipGame {
 			if (player.fire()) {
 				// System.err.println("DEBUG: BattleshipGame.run(): fire() returned true");
 				hitCount++;
+				System.out.println("Hit!");
 				
+			}
+			else {
+				System.out.println("Miss!");
 			}
 			shotCount++;
 			if (totalOccupiedSectors == hitCount) {

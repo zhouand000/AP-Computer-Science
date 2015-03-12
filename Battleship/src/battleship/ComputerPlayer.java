@@ -17,6 +17,7 @@ public class ComputerPlayer extends Player {
 	 */
 	public ComputerPlayer () {
 		
+		super("Computer");
 		name = "Computer";
 		fillBoard();
 		
@@ -56,9 +57,7 @@ public class ComputerPlayer extends Player {
 		Ship ship = new Ship(type);
 		// System.err.println("DEBUG: ComputerPlayer.placeShip(): Finished creating new ship");
 		int counter = 0;
-		Direction direction = random.nextBoolean()
-				? Direction.DOWN
-				: Direction.RIGHT;
+		Direction direction = Direction.DOWN;
 		// System.err.println("DEBUG: ComputerPlayer.placeShip(): About to call getSize()");
 		int shipSize = type.getSize();
 		// System.err.println("DEBUG: ComputerPlayer.placeShip(): Finished getSize() call");
@@ -66,13 +65,11 @@ public class ComputerPlayer extends Player {
 		int xCoord = 0;
 		int yCoord = 0;
 		
-		while (!sucess && counter < 200) {
+		while (!sucess) {
 			counter++;
 			// System.err.println("DEBUG: ComputerPlayer.placeShip(): In while loop, counter = " + counter);
 			// System.err.println("DEBUG: ComputerPlayer.placeShip(): Getting direction");
-			direction = random.nextBoolean()
-					? Direction.DOWN
-					: Direction.RIGHT;
+			direction = Direction.DOWN;
 			// System.err.println("DEBUG: ComputerPlayer.placeShip(): Finished getting direction, direction = " + direction.toString());
 			// System.err.println("DEBUG: ComputerPlayer.placeShip(): Getting coords");
 			xCoord = random.nextInt(shipBoard.size);
@@ -83,8 +80,16 @@ public class ComputerPlayer extends Player {
 			// System.err.println("DEBUG: ComputerPlayer.placeShip(): Finished initial direction check, checkDirection() returned " + sucess);
 			
 			if (!sucess) {
-				direction = direction == Direction.DOWN ? Direction.RIGHT
-						: Direction.DOWN;
+				// direction = direction == Direction.DOWN ? Direction.RIGHT
+				//		: Direction.DOWN;
+				
+				if (direction == Direction.DOWN) {
+					
+					direction = Direction.RIGHT;
+					
+				}
+				else direction = Direction.DOWN;
+				
 				sucess = sucess ? sucess : checkDirection(direction
 						, shipSize, xCoord, yCoord);
 				// System.err.println("DEBUG: ComputerPlayer.placeShip(): Finished secondary direction check, direction = " + direction);
@@ -120,6 +125,7 @@ public class ComputerPlayer extends Player {
 					// System.err.println("DEBUG: ComputerPlayer.placeShip(): Done with one for loop interation: i = " + i);
 					
 				}
+				break;
 			default:
 				throw new NullPointerException("Something went wrong in ComputerPlayer.placeShip(), probably in the logic");
 		}
@@ -147,12 +153,12 @@ public class ComputerPlayer extends Player {
 		// Checks if the conditions are valid
 		// shipBoard.grid[xCoord][yCoord].hasShip() will return true if it has a
 		// ship, so we want to negate that
-		if (!shipBoard.grid[xCoord][yCoord].hasShip()) {
+		if (shipBoard.grid[xCoord][yCoord].hasShip()) {
 			// System.err.println("DEBUG: ComputerPlayer.checkCoord(): Failed test 2");
 			return false;
 			
 		}
-		else return true;
+		return true;
 	}
 	
 	/**
@@ -173,7 +179,7 @@ public class ComputerPlayer extends Player {
 				
 				for (int i = 0; i < shipSize; i++) {
 					// Checks if the conditions are valid
-					if (checkCoord(xCoord, yCoord + i) == false) {
+					if (!checkCoord(xCoord, yCoord + i)) {
 						return false;
 					}
 					
@@ -183,7 +189,7 @@ public class ComputerPlayer extends Player {
 				for (int i = 0; i < shipSize; i++) {
 					
 					// Checks if the conditions are valid
-					if (checkCoord(xCoord + i, yCoord) == false) {
+					if (!checkCoord(xCoord + i, yCoord)) {
 						return false;
 					}
 				}

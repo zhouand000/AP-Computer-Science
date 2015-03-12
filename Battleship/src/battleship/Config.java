@@ -130,7 +130,7 @@ public class Config {
 		if (isNewConfig) {
 			
 			// Seed = new Random(0).nextLong();
-			seed = System.currentTimeMillis();
+			seed = 0; // System.currentTimeMillis();
 			writeConfig();
 		}
 		
