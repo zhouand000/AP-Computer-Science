@@ -56,6 +56,7 @@ public class ComputerPlayer extends Player {
 		// System.err.println("DEBUG: ComputerPlayer.placeShip(): Creating new ship");
 		Ship ship = new Ship(type);
 		// System.err.println("DEBUG: ComputerPlayer.placeShip(): Finished creating new ship");
+		@SuppressWarnings("unused")
 		int counter = 0;
 		Direction direction = Direction.DOWN;
 		// System.err.println("DEBUG: ComputerPlayer.placeShip(): About to call getSize()");

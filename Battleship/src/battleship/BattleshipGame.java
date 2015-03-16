@@ -58,6 +58,9 @@ public class BattleshipGame {
 	 */
 	public Log log;
 	
+	/**
+	 * Determines if cheat mode is enabled
+	 */
 	public boolean isCheatModeOn;
 	
 	static private BattleshipGame game;
