@@ -30,7 +30,6 @@ public class Ship {
 	 */
 	public final ShipType type;
 	
-	// TODO Unfinished
 	/**
 	 * ArrayList of locations
 	 */
@@ -52,7 +51,6 @@ public class Ship {
 		this.hasDamage = new boolean[size];
 		
 		// Sets name
-		// TODO Names
 		this.name = type.getName();
 		
 		// Sets type
@@ -83,7 +81,7 @@ public class Ship {
 	 */
 	public boolean hit (int position) {
 		
-		//this.hits[position]++;// TODO Null pointer here!!!! FIX!!!
+		//this.hits[position]++;
 		this.hasDamage[position] = true;
 		if (isSunk()) {
 			

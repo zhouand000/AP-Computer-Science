@@ -68,7 +68,6 @@ public class Player {
 		// System.err.println("DEBUG:in initShipBoard()");
 		// shipBoard = new ShipBoard(game.size);
 		
-		// TODO The exception is here
 		// shipBoard.fillBoard();
 		
 		// System.err.println("DEBUG:exiting initShipBoard()");
@@ -125,8 +124,8 @@ public class Player {
 			if (Util.isPositiveInteger(input[0])
 					&& Util.isPositiveInteger(input[1])) {
 				
-				output[0] = Integer.parseInt(input[0]);
-				output[1] = Integer.parseInt(input[1]);
+				output[1] = Integer.parseInt(input[0]);
+				output[0] = Integer.parseInt(input[1]);
 				isValid = true;
 			}
 			
