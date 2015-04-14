@@ -7,12 +7,19 @@ public class TestLock extends ICombinationLock {
 		super(x, y, z);
 		
 	}
-	
+
 	@Override
-	public void unlock (int x, int y, int z) {
+	public boolean unlock (int x, int y, int z) {
 		
-		
+		if (checkCombination(x, y, z)) {
+			
+			isLocked = false;
+			return true;
+		}
+		return true;
 		
 	}
+	
+	
 	
 }

@@ -7,7 +7,7 @@ package examples.interfaces.lock;
  */
 public abstract class ICombinationLock {
 	
-	private boolean isLocked;
+	protected boolean isLocked;
 	
 	/**
 	 * The combination
@@ -23,7 +23,7 @@ public abstract class ICombinationLock {
 	 */
 	public ICombinationLock(int x, int y, int z) {
 		
-		setCombo(x, y, z);
+		setCombination(x, y, z);
 		
 	}
 	
@@ -35,7 +35,7 @@ public abstract class ICombinationLock {
 	 * @param z
 	 * 
 	 */
-	public void setCombo (int x, int y, int z) {
+	public void setCombination (int x, int y, int z) {
 		
 		combination[0] = x;
 		combination[1] = y;
@@ -63,9 +63,10 @@ public abstract class ICombinationLock {
 	 * @param x
 	 * @param y
 	 * @param z
+	 * @return 
 	 * 
 	 */
-	abstract public void unlock (int x, int y, int z);
+	abstract public boolean unlock (int x, int y, int z);
 	
 	/**
 	 * Locks

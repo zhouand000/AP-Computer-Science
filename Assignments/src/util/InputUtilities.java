@@ -37,6 +37,16 @@ public class InputUtilities {
 	public static final Pattern BLANK_PATTERN = Pattern.compile("^[\\h\\w\\v]*$");
 	
 	/**
+	 * @return an int
+	 */
+	public int readInt () {
+		
+		System.out.print(":");
+		return scanner.nextInt();
+		
+	}
+	
+	/**
 	 * Gets input
 	 * 
 	 * @param collection
