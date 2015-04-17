@@ -1,5 +1,6 @@
 package util;
 
+import java.io.InputStream;
 import java.util.Collection;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -104,6 +105,18 @@ public class InputUtilities {
 			
 		}
 		while (true);
+		
+	}
+	
+	public static void getStringInput (Collection<String> c, InputStream is) {
+		
+		Scanner sc = new Scanner(is);
+		String input;
+		while(sc.hasNextLine()) {
+			
+			c.add(sc.nextLine().trim());
+			
+		}
 		
 	}
 	
