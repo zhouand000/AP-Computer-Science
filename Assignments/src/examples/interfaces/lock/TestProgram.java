@@ -9,6 +9,9 @@ public class TestProgram {
 	
 	TestLock lock;
 	
+	/**
+	 * A scanner
+	 */
 	public Scanner scanner = new Scanner(System.in);
 	
 	/**
@@ -46,6 +49,9 @@ public class TestProgram {
 		lock.setCombination(readInt(), readInt(), readInt());
 	}
 	
+	/**
+	 * @return true if unlocked
+	 */
 	public boolean attemptUnlock() {
 		
 		System.out.println("Enter the combination");

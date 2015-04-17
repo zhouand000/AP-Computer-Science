@@ -1,7 +1,5 @@
 package examples.interfaces.phonebook;
 
-import java.io.File;
-
 /**
  * A phonebook
  * 

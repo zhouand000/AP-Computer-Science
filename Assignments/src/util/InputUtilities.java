@@ -34,6 +34,9 @@ public class InputUtilities {
 	 */
 	public static final Pattern PHONE_NUMBER_PATTERN = Pattern.compile("[(?=(\\d{3}))(?=\\d{3}))]");
 	
+	/**
+	 * Matches a blank string
+	 */
 	public static final Pattern BLANK_PATTERN = Pattern.compile("^[\\h\\w\\v]*$");
 	
 	/**

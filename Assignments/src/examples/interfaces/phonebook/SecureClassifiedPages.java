@@ -4,8 +4,6 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
 
-import util.InputUtilities;
-
 /**
  * A phonebook class
  * 
@@ -96,7 +94,7 @@ public class SecureClassifiedPages implements Phonebook {
 	}
 	
 	@Override
-	public String toString() {
+	public String toString () {
 		
 		return db.toString();
 		

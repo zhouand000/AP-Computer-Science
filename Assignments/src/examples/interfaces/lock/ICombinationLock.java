@@ -51,6 +51,12 @@ public abstract class ICombinationLock {
 		return isLocked;
 	}
 	
+	/**
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return true if the combination is correct
+	 */
 	public boolean checkCombination (int x, int y, int z) {
 		
 		return x == combination[0] && y == combination[1] && z == combination[2];
@@ -63,7 +69,7 @@ public abstract class ICombinationLock {
 	 * @param x
 	 * @param y
 	 * @param z
-	 * @return 
+	 * @return true if unlocked
 	 * 
 	 */
 	abstract public boolean unlock (int x, int y, int z);
