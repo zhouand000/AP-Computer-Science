@@ -29,7 +29,7 @@ public class TestLock extends ICombinationLock {
 			isLocked = false;
 			return true;
 		}
-		return true;
+		return false;
 		
 	}
 	

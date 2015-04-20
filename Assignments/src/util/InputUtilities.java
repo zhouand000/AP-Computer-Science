@@ -22,9 +22,10 @@ public class InputUtilities {
 	public static final Pattern INTEGER_PATTERN = Pattern.compile("^\\d+$");
 	
 	/**
-	 * Double 
+	 * Double
 	 */
 	public static final Pattern DOUBLE_PATTERN = Pattern.compile("^[-+]?[0-9]*\\.?[0-9]+$");
+	
 	/**
 	 * Exit
 	 */
@@ -38,15 +39,41 @@ public class InputUtilities {
 	/**
 	 * Matches a blank string
 	 */
-	public static final Pattern BLANK_PATTERN = Pattern.compile("^[\\h\\w\\v]*$");
+	public static final Pattern BLANK_PATTERN = Pattern.compile("^[\\w\\v]*$");
 	
 	/**
+	 * Matches a string of length one.
+	 */
+	public static final Pattern ONE_CHAR_PATTERN = Pattern.compile("^.$");
+	
+	/**
+	 * May return an exception
+	 * 
 	 * @return an int
 	 */
 	public int readInt () {
 		
 		System.out.print(":");
 		return scanner.nextInt();
+		
+	}
+	
+	/**
+	 * Reads a char, and only a char
+	 * 
+	 * @return a char
+	 */
+	public static char readChar () {
+		char c;
+		
+		do {
+			
+			c = scanner.next("^.$").charAt(0);
+			System.out.print(":");
+			
+		}
+		while (c != 0);
+		return c;
 		
 	}
 	
@@ -108,15 +135,21 @@ public class InputUtilities {
 		
 	}
 	
+	/**
+	 * Gets String input from an InputStream, and adds to a collection
+	 * 
+	 * @param c
+	 * @param is
+	 */
 	public static void getStringInput (Collection<String> c, InputStream is) {
 		
 		Scanner sc = new Scanner(is);
-		String input;
-		while(sc.hasNextLine()) {
+		while (sc.hasNextLine()) {
 			
 			c.add(sc.nextLine().trim());
 			
 		}
+		sc.close();
 		
 	}
 	
