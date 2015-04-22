@@ -1,0 +1,1 @@
+	Bubble sort is slower than Insertion Sort. However, Bubble sort is simpler. Both have an average complexity of O(n).

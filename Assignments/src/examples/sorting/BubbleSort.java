@@ -1,7 +1,7 @@
 /**
  * 
  */
-package examples.sorting.bubblesort;
+package examples.sorting;
 
 import java.util.Arrays;
 
@@ -22,7 +22,7 @@ public class BubbleSort {
 	 * @param args
 	 */
 	public static void main (String[] args) {
-		int[] arr = { 1, 3, 4, 2, 5 };
+		byte[] arr = { 1, 3, 4, 2, 5 };
 		System.out.println(Arrays.toString(arr));
 		sort(arr);
 		System.out.println(Arrays.toString(arr));
@@ -34,9 +34,10 @@ public class BubbleSort {
 	 * 
 	 * @param arr
 	 */
-	public static void sort (int[] arr) {
+	public static void sort (byte[] arr) {
 		
-		int temp;
+		int count = 0;
+		byte temp;
 		boolean b;
 		
 		while (true) {
@@ -51,15 +52,16 @@ public class BubbleSort {
 					arr[i + 1] = arr[i];
 					arr[i] = temp;
 					b = true;
-					
+					count++;
 				}
-				System.out.println(Arrays.toString(arr));
+				// System.out.println(Arrays.toString(arr));
 				
 			}
 			System.out.println();
-			if (!b)
+			if (!b) {
+				System.out.println("Swaps: " + count);
 				break;
-			
+			}
 		}
 		
 	}

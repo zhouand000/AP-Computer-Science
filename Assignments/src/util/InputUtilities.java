@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
  */
 public class InputUtilities {
 	
+	// Scanner	
 	private static Scanner scanner = new Scanner(System.in);
 	
 	// Sets up regex Patterns
@@ -47,11 +48,23 @@ public class InputUtilities {
 	public static final Pattern ONE_CHAR_PATTERN = Pattern.compile("^.$");
 	
 	/**
-	 * May return an exception
+	 * 
+	 * @return A string.
+	 */
+	public static String readLine () {
+		
+		System.out.println(":");
+		return scanner.nextLine();
+		
+	}
+	
+	/**
+	 * Reads an integer. If the 
 	 * 
 	 * @return an int
+	 * @throws NumberFormatException If input from System.in cannot be parsed into an int
 	 */
-	public int readInt () {
+	public static int readInt () throws NumberFormatException {
 		
 		System.out.print(":");
 		return scanner.nextInt();
