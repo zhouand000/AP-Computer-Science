@@ -12,6 +12,11 @@ import java.util.Arrays;
 public class BubbleSort {
 	
 	/**
+	 * Count
+	 */
+	public static int count = 0;
+	
+	/**
 	 * 
 	 */
 	public BubbleSort () {
@@ -36,7 +41,7 @@ public class BubbleSort {
 	 */
 	public static void sort (byte[] arr) {
 		
-		int count = 0;
+		count = 0;
 		byte temp;
 		boolean b;
 		
@@ -57,9 +62,9 @@ public class BubbleSort {
 				// System.out.println(Arrays.toString(arr));
 				
 			}
-			System.out.println();
+			// System.out.println();
 			if (!b) {
-				System.out.println("Swaps: " + count);
+				// System.out.println("Swaps: " + count);
 				break;
 			}
 		}

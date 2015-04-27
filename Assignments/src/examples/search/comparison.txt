@@ -1,0 +1,5 @@
+Binary search is more efficient than Sequential search
+Sequential search has a complexity of O(n), while Binary search has a complexity of O(log n).
+
+Sequential search is more useful when the list is not sorted. Binary search is more useful when the list is sorted. 
+

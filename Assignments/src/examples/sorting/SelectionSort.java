@@ -9,19 +9,17 @@ import java.util.Arrays;
  * @author Andrew
  * 
  */
-public class InsertionSort {
+public class SelectionSort {
 	
 	/**
-	 * Count
+	 * The number of swaps
 	 */
 	public static int count = 0;
-	
-	// public static boolean print = true;
 	
 	/**
 	 * 
 	 */
-	public InsertionSort () {
+	public SelectionSort () {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -33,42 +31,53 @@ public class InsertionSort {
 	public static void main (String[] args) {
 		byte[] arr = { 1, 3, 4, 2, 5 };
 		System.out.println(Arrays.toString(arr));
-		System.out.println();
 		sort(arr);
 		System.out.println(Arrays.toString(arr));
 		System.out.println(count);
-		
 	}
 	
 	/**
-	 * 
 	 * @param arr
 	 */
 	public static void sort (byte[] arr) {
 		
-		byte temp;
+		count = 0;
+		int smallIndex;
+		int pass;
+		int j;
+		int length = arr.length;
 		
-		for (int i = 0; i < arr.length; i++) {
+		for (pass = 0; pass < (length - 1); pass++) {
 			
-			temp = arr[i];
-			int j;
+			smallIndex = pass;
 			
-			for (j = i; j > 0 && arr[j - 1] > temp; j--) {
+			for (j = pass + 1; j < length; j++) {
 				
-				arr[j] = arr[j - 1];
-				// System.out.println(Arrays.toString(arr) + ", " + temp);
+				if (arr[j] < arr[smallIndex]) {
+					
+					smallIndex = j;
+					
+				}
 				
 			}
 			
-			arr[j] = temp;
-			count++;
-			// System.out.println(Arrays.toString(arr));
-			// System.out.println();
+			swap(arr, pass, smallIndex);
 			
 		}
 		
-		// System.out.println("Insertions: " + count);
-		
 	}
 	
+	/**
+	 * @param arr
+	 * @param i
+	 * @param j
+	 */
+	public static void swap (byte[] arr, int i, int j) {
+		
+		count++;
+		byte temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+		
+	}
 }
