@@ -71,4 +71,24 @@ public class InsertionSort {
 		
 	}
 	
+	public static void threeLineSort (byte[] arr) {
+		
+		byte temp;
+		int j;
+		for (int i = 0; i < arr.length; i++) {
+			
+			temp = arr[i];
+			
+			for (j = i; j > 0 && arr[i - 1] > temp; j--) {
+				
+				arr[j] = arr[j - 1];
+				
+			}
+			
+			arr[j] = temp;
+			
+		}
+		
+	}
+	
 }

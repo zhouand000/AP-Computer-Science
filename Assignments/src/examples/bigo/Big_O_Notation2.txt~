@@ -1,0 +1,21 @@
+1.  O(1); For each call to applyBreaks(), up to 2 operations will take place
+
+2.  O(1); The loop will always run 10 times
+
+3.  O(1); The loop will always run 10 times
+
+4.  O(1); The inner loop will always run 3 times, and the outer loop will always run 4 times
+
+5.  Impossible to determine; The only external input is System.getNanoTime(), which determines the seed. 
+
+6.  O(1); There is only one operation
+
+7.  O(1); There is no external input, so the program will always take the same amount of time.
+
+8.  O(1); There is no external input
+
+9.  O(1); There is no external input
+
+10. O(1); There	is no external input
+
+

@@ -33,6 +33,7 @@ public class WordSorter {
 			catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				Math.random();
 			}
 			
 		}
@@ -150,6 +151,7 @@ public class WordSorter {
 				fw.write(inputArray[i] + "\n");
 				
 			}
+			fw.flush();
 		}
 		catch (IOException e) {
 			// TODO Auto-generated catch block
