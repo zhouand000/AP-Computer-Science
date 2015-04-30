@@ -1,0 +1,12 @@
+	Between quicksort, insertion sort, selection sort, and bubble sort, the fastest sort is quicksort. Quicksort has an O(n log n) average complexity, which is vastly superior to the other sorts’ best case complexity of O(n^2). 
+
+     However, Quicksort is complex compared to bubble sort, insertion sort, and selection sort. Insertion sort is faster than selection and bubble sort, and can be implemented in less lines of code. In addition, in the case that a sorted array is passed to the algorithm, quicksort has a time complexity of O(n log n), which is greater than insertion sort’s O(n). 
+
+	  Thus, when prototyping code, it is better to use the simpler insertion sort, in theory. However, if one has access to a pre-written sorting method, as is the case in java, insertion sort’s advantage of simplicity vanishes. 
+
+	   Between sequential search and binary search, binary search is faster, with a time complexity of O(log n), than sequential search’s complexity of O(n). However, binary search requires the list or array to be pre-sorted, which adds overhead, and increases the complexity to O(n log n) in the case of quicksort. 
+
+	   Although sorting and binary search together is slower in theory, in many cases, sorting and using binary search is faster than using sequential search. In most use cases, an array or a list will have to be searched for multiple keys, which makes sorting then using binary search worthwhile. 
+
+
+

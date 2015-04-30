@@ -71,7 +71,11 @@ public class InsertionSort {
 		
 	}
 	
-	public static void threeLineSort (byte[] arr) {
+	/**
+	 * Slightly optimized variant
+	 * @param arr
+	 */
+	public static void optimizedSort (byte[] arr) {
 		
 		byte temp;
 		int j;
