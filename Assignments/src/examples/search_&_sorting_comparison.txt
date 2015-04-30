@@ -7,6 +7,3 @@
 	   Between sequential search and binary search, binary search is faster, with a time complexity of O(log n), than sequential search’s complexity of O(n). However, binary search requires the list or array to be pre-sorted, which adds overhead, and increases the complexity to O(n log n) in the case of quicksort. 
 
 	   Although sorting and binary search together is slower in theory, in many cases, sorting and using binary search is faster than using sequential search. In most use cases, an array or a list will have to be searched for multiple keys, which makes sorting then using binary search worthwhile. 
-
-
-

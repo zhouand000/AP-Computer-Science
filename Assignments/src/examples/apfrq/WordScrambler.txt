@@ -1,0 +1,22 @@
+public class WordScrambler {
+
+  private String recombine (String word1, String word2) {
+
+    return word1.substring(0,word1.length()/2).concat(word2.substring(word2.length()/2,word2.length));
+
+  }
+
+  private String[] mixedWords (String[] words) {
+
+    for (int i = 0; i < words.length(); i+=2) {
+      String temp = words[i];
+      words[i] = recombine(words[i], words[i+1]);
+      words[i+1] = recombine(words[i+1], temp);
+
+    }
+
+    return words;
+
+  }
+
+}
