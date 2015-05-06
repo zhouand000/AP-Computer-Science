@@ -1,3 +1,6 @@
+package examples.ap.mountain;
+
+@SuppressWarnings("javadoc")
 public class Mountain {
     
     public static void main (String[] args) {

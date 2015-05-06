@@ -1,3 +1,6 @@
+package examples.ap.wordscrambler;
+
+@SuppressWarnings("javadoc")
 public class WordScrambler {
 
     public static void main (String[] args) {
