@@ -6,6 +6,7 @@ package examples.inheritance.bank;
  * @author Andrew
  *
  */
+@SuppressWarnings("all")
 public abstract class Account {
 	
 	protected double balance;
@@ -15,18 +16,18 @@ public abstract class Account {
 	 */
 	public Account () {
 		
-		balance = 0;
+		this.balance = 0;
 		
 	}
 	
 	/**
 	 * Constructor
 	 * 
-	 * @param d Starting balance 
+	 * @param d Starting balance
 	 */
 	public Account (double d) {
 		
-		balance = d;
+		this.balance = d;
 		
 	}
 	
@@ -38,7 +39,7 @@ public abstract class Account {
 	public void deposit (double d) {
 		
 		if (d > 0) {
-			balance += d;
+			this.balance += d;
 		}
 		
 	}
@@ -50,7 +51,7 @@ public abstract class Account {
 		
 		if (d > 0) {
 			
-			balance -= d;
+			this.balance -= d;
 			
 		}
 		
@@ -60,7 +61,7 @@ public abstract class Account {
 	 * @return the balance
 	 */
 	public double getBalance () {
-		return balance;
+		return this.balance;
 	}
 	
 }

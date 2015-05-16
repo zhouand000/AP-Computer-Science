@@ -8,6 +8,7 @@ import java.util.Scanner;
  * @author Andrew
  *
  */
+@SuppressWarnings("all")
 public class Account {
 	
 	static Scanner scanner = new Scanner(System.in);
@@ -128,7 +129,7 @@ public class Account {
 		System.out.print("Password:\n:");
 		String password = scanner.nextLine();
 		
-		return login (username, password);
+		return login (this.username, password);
 		
 	}
 	
@@ -143,7 +144,9 @@ public class Account {
 		if (this.password.equals(password)) {
 			return true;
 		}
-		else return false;
+		else {
+			return false;
+		}
 	}
 	
 	/**
@@ -151,7 +154,7 @@ public class Account {
 	 */
 	public String getUsername () {
 		
-		return username;
+		return this.username;
 		
 	}
 	
@@ -171,7 +174,7 @@ public class Account {
 	@SuppressWarnings("unused")
 	private String getPassword () {
 		
-		return password;
+		return this.password;
 		
 	}
 	
@@ -191,7 +194,7 @@ public class Account {
 	 */
 	public int getMaxTries () {
 		
-		return maxTries;
+		return this.maxTries;
 		
 	}
 	
@@ -210,7 +213,7 @@ public class Account {
 	 */
 	public boolean isExpires () {
 		
-		return expires;
+		return this.expires;
 		
 	}
 	
@@ -229,7 +232,7 @@ public class Account {
 	 */
 	public int getMaxUses () {
 		
-		return maxUses;
+		return this.maxUses;
 		
 	}
 	

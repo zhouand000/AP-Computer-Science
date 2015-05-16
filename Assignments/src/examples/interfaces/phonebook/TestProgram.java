@@ -1,6 +1,8 @@
 package examples.interfaces.phonebook;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Scanner;
 
 /**
@@ -44,13 +46,15 @@ public class TestProgram {
 		
 		System.out.println("Reading information from archive...");
 		try {
-			scp.readInformation(new File("testInputFile.txt"));
+			this.scp.readInformation(new File("testInputFile.txt"));
 		}
 		catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-		while(runMainMenu());
+		while(runMainMenu()) {
+			;
+		}
 		
 	}
 	
@@ -77,7 +81,7 @@ public class TestProgram {
 		while (selection < 1 || selection > 4);
 		
 		switch (selection) {
-		
+			
 			case 1:
 				runSearchMenu();
 				break;
@@ -85,14 +89,14 @@ public class TestProgram {
 				System.out.println("Error 1337: Please try again later.");
 				break;
 			case 3:
-				System.out.println(scp);
+				System.out.println(this.scp);
 				break;
 			case 4:
 				System.exit(0);
 				return false;
 			default:
 				break;
-		
+				
 		}
 		return true;
 		
@@ -120,16 +124,16 @@ public class TestProgram {
 		while (selection < 0 || selection > 3);
 		
 		switch (selection) {
-		
+			
 			case 1:
 				String name = readName();
 				System.out.println("The number that matches your query is: ");
-				System.out.println(scp.findNumber(name));
+				System.out.println(this.scp.findNumber(name));
 				return true;
 			case 2:
 				int number = readNumber();
 				System.out.println("The person that matches your query is: ");
-				System.out.println(scp.findName(number));
+				System.out.println(this.scp.findName(number));
 				return true;
 			case 3:
 			default:

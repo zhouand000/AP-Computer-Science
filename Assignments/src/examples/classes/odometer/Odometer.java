@@ -4,6 +4,7 @@ package examples.classes.odometer;
  * @author Andrew
  *
  */
+@SuppressWarnings("all")
 public class Odometer {
 	
 	private double fuel;
@@ -15,8 +16,8 @@ public class Odometer {
 	 */
 	public Odometer () {
 		
-		mileage = 0;
-		fuel = 0;
+		this.mileage = 0;
+		this.fuel = 0;
 		
 	}
 	
@@ -66,7 +67,7 @@ public class Odometer {
 	 */
 	public double getEfficiency () {
 		
-		return (double) mileage / (double) fuel;
+		return this.mileage / this.fuel;
 		
 	}
 	
@@ -77,7 +78,7 @@ public class Odometer {
 	 */
 	public double getMileage () {
 		
-		return mileage;
+		return this.mileage;
 		
 	}
 	
@@ -88,7 +89,7 @@ public class Odometer {
 	 */
 	public double getFuel () {
 		
-		return fuel;
+		return this.fuel;
 		
 	}
 	
@@ -97,8 +98,8 @@ public class Odometer {
 	 */
 	public void reset () {
 		
-		mileage = 0;
-		fuel = 0;
+		this.mileage = 0;
+		this.fuel = 0;
 		
 	}
 	
@@ -107,7 +108,7 @@ public class Odometer {
 	 */
 	public void resetFuel () {
 		
-		fuel = 0;
+		this.fuel = 0;
 		
 	}
 	
@@ -116,7 +117,7 @@ public class Odometer {
 	 */
 	public void resetMilage () {
 		
-		mileage = 0;
+		this.mileage = 0;
 		
 	}
 }

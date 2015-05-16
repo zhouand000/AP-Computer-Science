@@ -1,7 +1,6 @@
 package examples.linkedlists;
 
 import java.util.AbstractSequentialList;
-import java.util.Collection;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
@@ -11,8 +10,7 @@ import java.util.NoSuchElementException;
  * @param <E>
  *            The
  */
-public class LinkedList<E> extends AbstractSequentialList<E> implements
-		Iterable<E>, Collection<E> {
+public class LinkedList<E> extends AbstractSequentialList<E> {
 	
 	/**
 	 * First node
@@ -37,7 +35,6 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 	
 	@Override
 	public void add (int index, E element) {
-		
 		
 		try {
 			listIterator(index).add(element);
@@ -93,18 +90,20 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 	 */
 	void linkLast (E element) {
 		
-		final Node<E> lastNode = last;
-		final Node<E> newNode = new Node<E>(last, element, null);
+		final Node<E> lastNode = this.last;
+		final Node<E> newNode = new Node<E>(this.last, element, null);
 		
-		last = newNode;
+		this.last = newNode;
 		if (lastNode == null) {
 			
-			first = newNode;
+			this.first = newNode;
 			
 		}
-		else lastNode.next = newNode;
+		else {
+			lastNode.next = newNode;
+		}
 		
-		size++;
+		this.size++;
 		
 	}
 	
@@ -124,14 +123,12 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 		nextNode.previous = newNode;
 		if (previousNode == null) {
 			
-			first = newNode;
+			this.first = newNode;
 			
 		}
-        size++;
+		this.size++;
 		
 	}
-	
-	
 	
 	@Override
 	public ListIterator<E> listIterator (int index) {
@@ -156,16 +153,18 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 	 */
 	public Node<E> node (int index) {
 		
-		if (index < (size >> 1)) {
-			Node<E> x = first;
-			for (int i = 0; i < index; i++)
+		if (index < (this.size >> 1)) {
+			Node<E> x = this.first;
+			for (int i = 0; i < index; i++) {
 				x = x.next;
+			}
 			return x;
 		}
 		else {
-			Node<E> x = last;
-			for (int i = size - 1; i > index; i--)
+			Node<E> x = this.last;
+			for (int i = this.size - 1; i > index; i--) {
 				x = x.previous;
+			}
 			return x;
 		}
 		
@@ -211,7 +210,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 	
 	@Override
 	public int size () {
-		return size;
+		return this.size;
 	}
 	
 	E unlink (Node<E> node) {
@@ -221,7 +220,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 		final Node<E> previous = node.previous;
 		if (node.previous == null) {
 			
-			first = next;
+			this.first = next;
 			
 		}
 		else {
@@ -233,7 +232,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 		
 		if (next == null) {
 			
-			last = previous;
+			this.last = previous;
 			
 		}
 		else {
@@ -245,7 +244,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 		
 		node.value = null;
 		
-		size--;
+		this.size--;
 		
 		return element;
 		
@@ -272,72 +271,72 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 	}
 	
 	/**
-	 * @author Andrew
-	 * Descending iterator
+	 * @author Andrew Descending iterator
 	 */
 	public class DescendingIterator implements ListIterator<E> {
 		
 		private LinkedListIterator iterator = new LinkedListIterator(size());
 		
-		public boolean hasNext() {
+		@Override
+		public boolean hasNext () {
 			
-			return iterator.hasPrevious();
+			return this.iterator.hasPrevious();
 			
 		}
 		
+		@Override
 		public E next () {
 			
-			return iterator.previous();
+			return this.iterator.previous();
 			
 		}
-
+		
 		@Override
 		public boolean hasPrevious () {
 			
-			return iterator.hasNext();
+			return this.iterator.hasNext();
 			
 		}
-
+		
 		@Override
 		public E previous () {
 			
-			return iterator.next();
+			return this.iterator.next();
 			
 		}
-
+		
 		@Override
 		public int nextIndex () {
 			// TODO Auto-generated method stub
 			return 0;
 		}
-
+		
 		@Override
 		public int previousIndex () {
 			// TODO Auto-generated method stub
 			return 0;
 		}
-
+		
 		@Override
 		public void remove () {
 			
-			iterator.remove();
-			
-		}
-
-		@Override
-		public void set (E e) {
-			
-			iterator.set(e);
-			
-		}
-
-		@Override
-		public void add (E e) {
-			
-			iterator.add(e);
+			this.iterator.remove();
 			
 		}
 		
+		@Override
+		public void set (E e) {
+			
+			this.iterator.set(e);
+			
+		}
+		
+		@Override
+		public void add (E e) {
+			
+			this.iterator.add(e);
+			
+		}
 		
 	}
 	
@@ -378,7 +377,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 		 */
 		public LinkedListIterator (int index) {
 			
-			next = (index == size) ? null : node(index);
+			this.next = (index == LinkedList.this.size) ? null : node(index);
 			
 		}
 		
@@ -388,55 +387,53 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 		 */
 		public void add (E element) {
 			
-			
 			// TODO UNFINISHED
-			lastReturned = null;
-			if (next == null) {
+			this.lastReturned = null;
+			if (this.next == null) {
 				
 				linkLast(element);
 				
 			}
-			else linkBefore(element, next);
+			else {
+				linkBefore(element, this.next);
+			}
 			
-			nextIndex++;
+			this.nextIndex++;
 			
 		}
 		
 		@Override
 		public boolean hasNext () {
 			
-			return nextIndex < size;
+			return this.nextIndex < LinkedList.this.size;
 			
 		}
 		
 		@Override
 		public boolean hasPrevious () {
 			
-			return nextIndex > 0;
+			return this.nextIndex > 0;
 		}
 		
 		@Override
 		public E next () {
-			
 			
 			if (!hasNext()) {
 				
 				throw new NoSuchElementException();
 				
 			}
-			lastReturned = next;
-			next = next.next;
-			nextIndex++;
-			return lastReturned.value;
+			this.lastReturned = this.next;
+			this.next = this.next.next;
+			this.nextIndex++;
+			return this.lastReturned.value;
 			
 		}
-		
-		
 		
 		@Override
 		public int nextIndex () {
 			
-			return nextIndex;
+			return this.nextIndex;
 			
 		}
 		
@@ -448,42 +445,45 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 				throw new NoSuchElementException();
 				
 			}
-			lastReturned = next = (next == null) ? last : next.previous;
-			nextIndex--;
-			return lastReturned.value;
+			this.lastReturned = this.next = (this.next == null)
+					? LinkedList.this.last : this.next.previous;
+			this.nextIndex--;
+			return this.lastReturned.value;
 			
 		}
 		
 		@Override
 		public int previousIndex () {
 			
-			return nextIndex - 1;
+			return this.nextIndex - 1;
 			
 		}
 		
 		@Override
 		public void remove () {
 			
-			if (lastReturned == null) {
+			if (this.lastReturned == null) {
 				
 				throw new IllegalStateException();
 				
 			}
 			
-			Node<E> lastNext = lastReturned.next;
-			unlink(lastReturned);
-			if (next == lastReturned) {
-				next = lastNext;
+			Node<E> lastNext = this.lastReturned.next;
+			unlink(this.lastReturned);
+			if (this.next == this.lastReturned) {
+				this.next = lastNext;
 			}
-			else nextIndex--;
-			lastReturned = null;
+			else {
+				this.nextIndex--;
+			}
+			this.lastReturned = null;
 			
 		}
 		
 		@Override
 		public void set (E element) {
 			
-			lastReturned.value = element;
+			this.lastReturned.value = element;
 			
 		}
 		
@@ -493,6 +493,7 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 	 * Node inner class
 	 * 
 	 * @author Andrew
+	 * @param <E>
 	 * 
 	 */
 	private static class Node<E> {
@@ -514,9 +515,13 @@ public class LinkedList<E> extends AbstractSequentialList<E> implements
 		
 		/**
 		 * Constructor
-		 * @param previous Previous node
-		 * @param element Value
-		 * @param next Next node
+		 * 
+		 * @param previous
+		 *            Previous node
+		 * @param element
+		 *            Value
+		 * @param next
+		 *            Next node
 		 */
 		public Node (Node<E> previous, E element,
 				Node<E> next) {

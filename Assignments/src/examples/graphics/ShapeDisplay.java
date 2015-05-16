@@ -1,7 +1,7 @@
 /**
  * 
  */
-package graphics;
+package examples.graphics;
 
 import java.awt.*;
 import java.awt.event.*;

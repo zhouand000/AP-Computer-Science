@@ -1,9 +1,13 @@
 package examples.stringfileio.wordsorter;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.FileSystems;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.io.*;
-import java.nio.file.FileSystems;
 
 /**
  * @author Andrew
@@ -17,21 +21,21 @@ public class WordSorter {
 	
 	private char s = FileSystems.getDefault().getSeparator().charAt(0);
 	
-	File inputFile = new File("." + s + "src" + s + "examples" + s
-			+ "stringfileio" + s + "wordsorter" + s + "inputFile.txt");
+	File inputFile = new File("." + this.s + "src" + this.s + "examples" + this.s
+			+ "stringfileio" + this.s + "wordsorter" + this.s + "inputFile.txt");
 	
-	File outputFile = new File("." + s + "src" + s + "examples" + s
-			+ "stringfileio" + s + "wordsorter" + s + "outputFile.txt");
+	File outputFile = new File("." + this.s + "src" + this.s + "examples" + this.s
+			+ "stringfileio" + this.s + "wordsorter" + this.s + "outputFile.txt");
 	
 	{
 		
-		if (!outputFile.exists()) {
+		if (!this.outputFile.exists()) {
 			
 			try {
-				outputFile.createNewFile();
+				this.outputFile.createNewFile();
 			}
 			catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 				Math.random();
 			}
@@ -43,10 +47,10 @@ public class WordSorter {
 	Scanner fileScanner;
 	{
 		try {
-			fileScanner = new Scanner(inputFile);
+			this.fileScanner = new Scanner(this.inputFile);
 		}
 		catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -54,10 +58,10 @@ public class WordSorter {
 	FileWriter fw;
 	{
 		try {
-			fw = new FileWriter(outputFile, false);
+			this.fw = new FileWriter(this.outputFile, false);
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -82,12 +86,12 @@ public class WordSorter {
 	 */
 	public void run () {
 		
-		if (!inputFile.exists()) {
+		if (!this.inputFile.exists()) {
 			
 			System.out.println("The inputFile does not exist.");
 			try {
 				System.out.println("The inputFile should be at "
-						+ inputFile.getCanonicalPath());
+						+ this.inputFile.getCanonicalPath());
 			}
 			catch (IOException e) {
 				
@@ -97,12 +101,12 @@ public class WordSorter {
 			System.exit(404);
 			
 		}
-		if (!outputFile.exists()) {
+		if (!this.outputFile.exists()) {
 			
 			System.out.println("The outputFile does not exist.");
 			try {
 				System.out.println("The outputFile should be at "
-						+ outputFile.getCanonicalPath());
+						+ this.outputFile.getCanonicalPath());
 			}
 			catch (IOException e) {
 				
@@ -114,11 +118,11 @@ public class WordSorter {
 		}
 		readFile();
 		System.out.println("The input is: ");
-		System.out.println(Arrays.toString(inputArray));
+		System.out.println(Arrays.toString(this.inputArray));
 		System.out.println("Sorting...");
-		Arrays.sort(inputArray);
+		Arrays.sort(this.inputArray);
 		System.out.println("The sorted input is: ");
-		System.out.println(Arrays.toString(inputArray));
+		System.out.println(Arrays.toString(this.inputArray));
 		outputFile();
 		
 	}
@@ -130,9 +134,9 @@ public class WordSorter {
 		
 		System.out.println("Reading file...");
 		
-		for (int i = 0; i < inputArray.length; i++) {
+		for (int i = 0; i < this.inputArray.length; i++) {
 			
-			inputArray[i] = fileScanner.nextLine();
+			this.inputArray[i] = this.fileScanner.nextLine();
 			
 		}
 		System.out.println("Finished reading input");
@@ -146,15 +150,15 @@ public class WordSorter {
 		
 		try {
 			
-			for (int i = 0; i < inputArray.length; i++) {
+			for (int i = 0; i < this.inputArray.length; i++) {
 				
-				fw.write(inputArray[i] + "\n");
+				this.fw.write(this.inputArray[i] + "\n");
 				
 			}
-			fw.flush();
+			this.fw.flush();
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

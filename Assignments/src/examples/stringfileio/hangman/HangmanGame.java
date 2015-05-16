@@ -1,8 +1,11 @@
 package examples.stringfileio.hangman;
 
-import java.util.*;
-import java.io.*;
-import java.nio.file.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.nio.file.FileSystems;
+import java.util.ArrayList;
+import java.util.Random;
 
 import util.InputUtilities;
 
@@ -46,7 +49,7 @@ public class HangmanGame {
 					+ "dictionary.txt")));
 		}
 		catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -62,28 +65,28 @@ public class HangmanGame {
 	public char[] word;
 	
 	{
-		Random random = new Random(seed);
+		Random random = new Random(this.seed);
 		int x = random.nextInt(dictionary.size());
-		word = dictionary.get(x).toCharArray();
+		this.word = dictionary.get(x).toCharArray();
 	}
 	
 	/**
 	 * Stores progress. True if the corresponding char was guessed.
 	 */
-	public boolean[] progress = new boolean[word.length];
+	public boolean[] progress = new boolean[this.word.length];
 	
 	/**
 	 * The alphabet
 	 */
 	public static final char[] alphabet = { 'A', 'B', 'C', 'D', 'E', 'F', 'G',
-			'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
-			'U', 'V', 'W', 'X', 'Y', 'Z' };
+		'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+		'U', 'V', 'W', 'X', 'Y', 'Z' };
 	
 	/**
 	 * Default constructor
 	 */
 	public HangmanGame () {
-		seed = 0;
+		this.seed = 0;
 	}
 	
 	/**
@@ -101,9 +104,9 @@ public class HangmanGame {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		for (int i = 0; i < word.length; i++) {
+		for (int i = 0; i < this.word.length; i++) {
 			
-			sb.append(progress[i] ? word[i] : "_");
+			sb.append(this.progress[i] ? this.word[i] : "_");
 			
 		}
 		
@@ -117,20 +120,23 @@ public class HangmanGame {
 	 */
 	public void guess (char c) {
 		
-		numberOfGuesses++;
+		this.numberOfGuesses++;
 		// System.out.println(remainingLetters.get(c-'A'));
 		// remainingLetters.remove(c - 0x40);
 		
-		for (int i = 0; i < word.length; i++) {
+		for (int i = 0; i < this.word.length; i++) {
 			// System.out.println("Word[" + i + "] = " + word[i]);
-			progress[i] = progress[i] ? true : word[i] == c;
+			this.progress[i] = this.progress[i] ? true : this.word[i] == c;
 			
 		}
 		
 		// Updates isFinished and isWon
-		if (numberOfGuesses == maxGuesses - 1)
-			isFinished = true;
-		else isFinished = isWon = checkForWin();
+		if (this.numberOfGuesses == this.maxGuesses - 1) {
+			this.isFinished = true;
+		}
+		else {
+			this.isFinished = this.isWon = checkForWin();
+		}
 		
 	}
 	
@@ -141,9 +147,11 @@ public class HangmanGame {
 	 */
 	private boolean checkForWin () {
 		
-		for (boolean b : progress)
-			if (!b)
+		for (boolean b : this.progress) {
+			if (!b) {
 				return false;
+			}
+		}
 		return true;
 		
 	}
@@ -153,7 +161,7 @@ public class HangmanGame {
 	 */
 	public boolean isFinished () {
 		
-		return isFinished;
+		return this.isFinished;
 		
 	}
 	
@@ -162,7 +170,7 @@ public class HangmanGame {
 	 */
 	public boolean isWon () {
 		
-		return isWon;
+		return this.isWon;
 		
 	}
 	
@@ -171,7 +179,7 @@ public class HangmanGame {
 	 */
 	public int getNumberOfGuesses () {
 		
-		return numberOfGuesses;
+		return this.numberOfGuesses;
 		
 	}
 	

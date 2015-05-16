@@ -7,7 +7,7 @@ package examples.interfaces.lock;
  */
 public abstract class ICombinationLock {
 	
-	protected boolean isLocked;
+	boolean isLocked;
 	
 	/**
 	 * The combination
@@ -37,9 +37,9 @@ public abstract class ICombinationLock {
 	 */
 	public void setCombination (int x, int y, int z) {
 		
-		combination[0] = x;
-		combination[1] = y;
-		combination[2] = z;
+		this.combination[0] = x;
+		this.combination[1] = y;
+		this.combination[2] = z;
 		
 	}
 	
@@ -48,7 +48,7 @@ public abstract class ICombinationLock {
 	 */
 	public boolean isLocked ()
 	{
-		return isLocked;
+		return this.isLocked;
 	}
 	
 	/**
@@ -59,7 +59,7 @@ public abstract class ICombinationLock {
 	 */
 	public boolean checkCombination (int x, int y, int z) {
 		
-		return x == combination[0] && y == combination[1] && z == combination[2];
+		return x == this.combination[0] && y == this.combination[1] && z == this.combination[2];
 		
 	}
 	
@@ -79,7 +79,7 @@ public abstract class ICombinationLock {
 	 */
 	public void lock () {
 		
-		isLocked = true;
+		this.isLocked = true;
 		
 	}
 	

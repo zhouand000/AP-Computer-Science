@@ -1,6 +1,9 @@
 package examples.inheritance.studentdb;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Scanner;
 
 /**
@@ -10,7 +13,7 @@ import java.util.Scanner;
 public class TestProgram {
 	
 	/**
-	 * System.in, at the time of class initialization. 
+	 * System.in, at the time of class initialization.
 	 */
 	public static final InputStream stdin = System.in;
 	
@@ -44,22 +47,24 @@ public class TestProgram {
 				System.setIn(new FileInputStream(inputFile));
 			}
 			catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 		}
 		
-		scanner = new Scanner(System.in);
+		this.scanner = new Scanner(System.in);
 		System.out.println("Creating students...");
 		for (int i = 0; i < 5; i++) {
 			
-			db.add(createNewStudent());
+			this.db.add(createNewStudent());
 			
 		}
-		scanner.close();
-		scanner = new Scanner(stdin);
+		this.scanner.close();
+		this.scanner = new Scanner(stdin);
 		System.setIn(stdin);
-		while (runMainMenu());
+		while (runMainMenu()) {
+			;
+		}
 		
 		
 	}
@@ -87,7 +92,7 @@ public class TestProgram {
 		while (selection < 1 || selection > 4);
 		
 		switch (selection) {
-		
+			
 			case 1:
 				runSearchMenu();
 				break;
@@ -95,14 +100,14 @@ public class TestProgram {
 				System.out.println("The database is currently locked in read-only mode.");
 				break;
 			case 3:
-				System.out.println(db);
+				System.out.println(this.db);
 				break;
 			case 4:
 				System.exit(0);
 				return false;
 			default:
 				break;
-		
+				
 		}
 		return true;
 		
@@ -125,27 +130,27 @@ public class TestProgram {
 		do {
 			
 			System.out.print(":");
-			selection = scanner.nextInt();
+			selection = this.scanner.nextInt();
 			
 		}
 		while (selection < 0 || selection > 4);
 		
 		switch (selection) {
-		
+			
 			case 1:
 				int id = readID();
 				System.out.println("The student that matches your query is: ");
-				System.out.println(db.findID(id));
+				System.out.println(this.db.findID(id));
 				return true;
 			case 2:
 				int grade = readGrade();
 				System.out.println("The students that match your query are: ");
-				System.out.println(db.findGrade(grade));
+				System.out.println(this.db.findGrade(grade));
 				return true;
 			case 3:
 				int age = readAge();
 				System.out.println("The students that match your querty are: ");
-				System.out.println(db.findAge(age));
+				System.out.println(this.db.findAge(age));
 				return true;
 			case 4:
 			default:
@@ -172,7 +177,7 @@ public class TestProgram {
 	public int readInt () {
 		
 		System.out.print(":");
-		return scanner.nextInt();
+		return this.scanner.nextInt();
 		
 	}
 	
@@ -184,7 +189,7 @@ public class TestProgram {
 	public String readLine () {
 		
 		System.out.print(":");
-		return scanner.nextLine().trim();
+		return this.scanner.nextLine().trim();
 		
 	}
 	
@@ -200,7 +205,7 @@ public class TestProgram {
 		System.out.println("ID:");
 		do {
 			System.out.print(":");
-			id = scanner.nextInt();
+			id = this.scanner.nextInt();
 		}
 		while (id < 0);
 		return id;
@@ -220,7 +225,7 @@ public class TestProgram {
 		System.out.println("First Name:");
 		do {
 			String temp = readLine().trim();
-			firstName = temp.length() == 0 ? scanner.nextLine() : temp;
+			firstName = temp.length() == 0 ? this.scanner.nextLine() : temp;
 		}
 		while (!firstName.matches("^\\p{IsAlphabetic}+$"));
 		return firstName;
@@ -237,7 +242,7 @@ public class TestProgram {
 		System.out.println("Last Name:");
 		do {
 			System.out.print(":");
-			lastName = scanner.nextLine();
+			lastName = this.scanner.nextLine();
 			
 		}
 		while (!lastName.matches("^\\p{IsAlphabetic}+$"));
@@ -257,7 +262,7 @@ public class TestProgram {
 		System.out.println("Grade:");
 		do {
 			System.out.print(":");
-			grade = scanner.nextInt();
+			grade = this.scanner.nextInt();
 		}
 		while (grade < 0);
 		
@@ -276,7 +281,7 @@ public class TestProgram {
 		System.out.println("Age:");
 		do {
 			System.out.print(":");
-			age = scanner.nextInt();
+			age = this.scanner.nextInt();
 		}
 		while (age < 0);
 		
