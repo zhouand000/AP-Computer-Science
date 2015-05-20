@@ -1,13 +1,11 @@
 package examples.stringfileio.hangman;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.Random;
 
-import util.InputUtilities;
+import util.IOUtilities;
 
 /**
  * @author Andrew Game
@@ -36,7 +34,7 @@ public class HangmanGame {
 	static {
 		char separator = FileSystems.getDefault().getSeparator().charAt(0);
 		try {
-			InputUtilities.getStringInput(dictionary, new FileInputStream(new File("."
+			IOUtilities.getStringInput(dictionary, new FileInputStream(new File("."
 					+ separator
 					+ "src"
 					+ separator
@@ -65,15 +63,15 @@ public class HangmanGame {
 	public char[] word;
 	
 	{
-		Random random = new Random(this.seed);
+		Random random = new Random(seed);
 		int x = random.nextInt(dictionary.size());
-		this.word = dictionary.get(x).toCharArray();
+		word = dictionary.get(x).toCharArray();
 	}
 	
 	/**
 	 * Stores progress. True if the corresponding char was guessed.
 	 */
-	public boolean[] progress = new boolean[this.word.length];
+	public boolean[] progress = new boolean[word.length];
 	
 	/**
 	 * The alphabet
@@ -86,7 +84,7 @@ public class HangmanGame {
 	 * Default constructor
 	 */
 	public HangmanGame () {
-		this.seed = 0;
+		seed = 0;
 	}
 	
 	/**
@@ -104,9 +102,9 @@ public class HangmanGame {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		for (int i = 0; i < this.word.length; i++) {
+		for (int i = 0; i < word.length; i++) {
 			
-			sb.append(this.progress[i] ? this.word[i] : "_");
+			sb.append(progress[i] ? word[i] : "_");
 			
 		}
 		
@@ -120,22 +118,22 @@ public class HangmanGame {
 	 */
 	public void guess (char c) {
 		
-		this.numberOfGuesses++;
+		numberOfGuesses++;
 		// System.out.println(remainingLetters.get(c-'A'));
 		// remainingLetters.remove(c - 0x40);
 		
-		for (int i = 0; i < this.word.length; i++) {
+		for (int i = 0; i < word.length; i++) {
 			// System.out.println("Word[" + i + "] = " + word[i]);
-			this.progress[i] = this.progress[i] ? true : this.word[i] == c;
+			progress[i] = progress[i] ? true : word[i] == c;
 			
 		}
 		
 		// Updates isFinished and isWon
-		if (this.numberOfGuesses == this.maxGuesses - 1) {
-			this.isFinished = true;
+		if (numberOfGuesses == maxGuesses - 1) {
+			isFinished = true;
 		}
 		else {
-			this.isFinished = this.isWon = checkForWin();
+			isFinished = isWon = checkForWin();
 		}
 		
 	}
@@ -147,7 +145,7 @@ public class HangmanGame {
 	 */
 	private boolean checkForWin () {
 		
-		for (boolean b : this.progress) {
+		for (boolean b : progress) {
 			if (!b) {
 				return false;
 			}
@@ -161,7 +159,7 @@ public class HangmanGame {
 	 */
 	public boolean isFinished () {
 		
-		return this.isFinished;
+		return isFinished;
 		
 	}
 	
@@ -170,7 +168,7 @@ public class HangmanGame {
 	 */
 	public boolean isWon () {
 		
-		return this.isWon;
+		return isWon;
 		
 	}
 	
@@ -179,7 +177,7 @@ public class HangmanGame {
 	 */
 	public int getNumberOfGuesses () {
 		
-		return this.numberOfGuesses;
+		return numberOfGuesses;
 		
 	}
 	

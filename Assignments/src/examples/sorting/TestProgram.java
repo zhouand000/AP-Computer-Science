@@ -6,7 +6,7 @@ package examples.sorting;
 import java.util.Arrays;
 import java.util.Random;
 
-import util.InputUtilities;
+import util.IOUtilities;
 
 /**
  * @author Andrew
@@ -45,7 +45,7 @@ public class TestProgram {
 		
 		System.out.println("#?");
 		
-		quantity = InputUtilities.readInt();
+		quantity = IOUtilities.readInt();
 		
 		numbers = new byte[quantity];
 		randomFill(numbers);

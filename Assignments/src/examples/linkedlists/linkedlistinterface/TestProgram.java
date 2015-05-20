@@ -1,8 +1,8 @@
 package examples.linkedlists.linkedlistinterface;
 
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.LinkedList;
+import java.util.*;
+
+import util.IOUtilities;
 
 /**
  * The test program
@@ -39,7 +39,7 @@ public class TestProgram {
 	public void run () {
 		
 		// Call to prewritten utility code
-		util.InputUtilities.getDoubleInput(list);
+		IOUtilities.getDoubleInput(list);
 		
 		System.out.println("List:");
 		System.out.println(list);
